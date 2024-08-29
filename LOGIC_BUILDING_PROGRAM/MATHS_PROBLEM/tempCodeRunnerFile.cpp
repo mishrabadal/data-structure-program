@@ -1,0 +1,1 @@
+ cout << "\nenter starting and ending range of number : ";
