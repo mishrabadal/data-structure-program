@@ -1,5 +1,103 @@
 #include <iostream>
 using namespace std;
+void largest_number()
+{
+    int n1, n2, n3, n4, n5;
+    n1 = 7, n2 = 89, n3 = 178, n4 = 249, n5 = 900;
+    // logic 1
+    // if (n1 > n2 && n1 > n3 && n1 > n4)
+    // {
+    //     cout << n1;
+    //     return;
+    // }
+    // else if (n2 > n1 && n2 > n3 && n2 > n4)
+    // {
+    //     cout << n2;
+    // }
+    // else if (n3 > n1 && n3 > n2 && n3 > n4)
+    // {
+    //     cout << n3;
+    // }
+    // else
+    // {
+    //     cout << n4;
+    // }
+
+    // logic 2
+    int flag;
+    if (n1 > n2)
+    {
+        flag = n1;
+    }
+    else
+    {
+        flag = n2;
+        if (flag < n3)
+        {
+            flag = n3;
+        }
+        if (flag < n4)
+        {
+            flag = n4;
+        }
+        if (flag < n5)
+        {
+            flag = n5;
+        }
+    }
+    cout << "largest number is : " << flag;
+}
+
+void smallest_number()
+{
+    int n1, n2, n3, n4, n5;
+    n1 = 7, n2 = 89, n3 = 178, n4 = 249, n5 = 900;
+    // logic 1
+    // if (n1 < n2 && n1 < n3 && n1 < n4)
+    // {
+    //     cout << n1;
+    //     return;
+    // }
+    // else if (n2 < n1 && n2 < n3 && n2 < n4)
+    // {
+    //     cout << n2;
+    // }
+    // else if (n3 < n1 && n3 < n2 && n3 < n4)
+    // {
+    //     cout << n3;
+    // }
+    // else
+    // {
+    //     cout << n4;
+    // }
+
+    // logic 2
+    int flag;
+    if (n1 < n2)
+    {
+        flag = n1;
+    }
+    else
+    {
+        flag = n2;
+        if (flag > n3)
+        {
+            flag = n3;
+        }
+        if (flag > n4)
+        {
+            flag = n4;
+        }
+        if (flag > n5)
+        {
+            flag = n5;
+        }
+    }
+    cout << "smallest number is : " << flag;
+}
+
+
+
 void number_checker()
 {
     int x = -87;
