@@ -39,7 +39,10 @@ void vector_create_same_value()
 
 void wave_form()
 {
-    int arr[4][4] = {16, 21, 37, 43, 52, 67, 74, 85, 94, 10, 11, 12, 13, 14, 15, 16};
+    int arr[4][4] = {16, 21, 37, 43,
+                     52, 67, 74, 85,
+                     94, 10, 11, 12,
+                     13, 14, 15, 16};
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
@@ -217,60 +220,110 @@ void rotate_180()
     cout << endl;
 }
 
-void search_element()
+void search_element_in_2d_arry()
 {
     int matrix[4][4] = {11, 20, 30, 40, 50, 60, 70, 80, 90, 10, 11, 12, 13, 14, 15, 16};
 
     int ans[4][4];
     int target = 40;
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if(matrix[i][j]==target){
-            cout <<"YES found";
-            break;
-            }
-        }
-        
-    }
-    cout << endl;
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     for (int j = 0; j < 4; j++)
+    //     {
+    //         if (matrix[i][j] == target)
+    //         {
+    //             cout << "YES found";
+    //             break;
+    //         }
+    //     }
+    // }
+    // cout << endl;
     // logic 1
 
     // logic 2
-   /* int n = 4, m = 4, x = 70;
+    /* int n = 4, m = 4, x = 70;
+     for (int i = 0; i < n; i++)
+     {
+         if (matrix[i][0] <= x && x <= matrix[i][n - 1])
+         {
+             int start = 0, end = m - 1, mid;
+             while (start <= end)
+             {
+                 mid = (start + end) / 2;
+                 if (matrix[i][mid] == x)
+                 {
+                     cout<<"found";
+
+                     return 1;
+
+
+                 }
+                 else if (matrix[i][mid] < x)
+                 {
+                     start = mid + 1;
+                 }
+                 else
+                 {
+                     end = mid - 1;
+                 }
+
+             }
+
+         }
+     }*/
+    //logic 3 start here
+    int n=4,m=4;
+    int start =0,end =n*m-1,mid,row_index,col_index;
+    int x =40;
+    while (start<=end)
+    {  
+        mid = (start+end)/2;
+        row_index = mid/m;
+        col_index = mid%m;
+        if(matrix[row_index][col_index]==x){
+           cout<<"found";;
+           break;
+        }
+        else if(matrix[row_index][col_index]<x){
+            start = mid+1;
+        }
+        else{
+            end =mid-1;
+        }
+
+    }
+    
+    //logic 3 end here
+      
+}
+
+void maximum_sum_rows()
+{
+    int arr[3][3] = {
+        11, 12, 10,
+        4, 5, 6,
+        7, 18, 19};
+    int n = 3;
+    int max = INT_MIN;
+    int sum, total_sum;
+    int index = -1;
     for (int i = 0; i < n; i++)
     {
-        if (matrix[i][0] <= x && x <= matrix[i][n - 1])
+        sum = 0;
+        for (int j = 0; j < n; j++)
         {
-            int start = 0, end = m - 1, mid;
-            while (start <= end)
-            {
-                mid = (start + end) / 2;
-                if (matrix[i][mid] == x)
-                {
-                    cout<<"found";
-               
-                    return 1;
-               
-                   
-                }
-                else if (matrix[i][mid] < x)
-                {
-                    start = mid + 1;
-                }
-                else
-                {
-                    end = mid - 1;
-                }
-               
-            }
-            
+            sum = sum + arr[i][j];
+        }
+        if (sum > max)
+        {
+            max = sum;
+            index = i;
+            total_sum = sum;
         }
     }
-     return 0;
-     */
+    cout << "maximum sum rows : " << index << " sum is : " << total_sum;
 }
+
 
 int main()
 {
@@ -279,8 +332,11 @@ int main()
     // wave_form();
     // spiral_form();
     // transpose_matrix();
-    //rotate_matrix_by_90();
-     //rotate_180();
-   // search_element();
+    // rotate_matrix_by_90();
+    // rotate_180();
+    // search_element();
+//wave_form();
+    //maximum_sum_rows();
+    search_element_in_2d_arry();
     return 0;
 }

@@ -64,7 +64,6 @@ void longest_palindrome_length()
 }
 
 // ADDITION OF TWO STRING FOR CALCULATION
-
 void addition_of_string()
 {
     string num1 = "123456";
@@ -193,10 +192,10 @@ void sort_vowel_in_string()
 
 int main()
 {
-    // sort_string();
+    sort_string();
     // longest_palindrome_length();
     // addition_of_string();
     // sorting_sentence();
-    sort_vowel_in_string();
+    //sort_vowel_in_string();
     return 0;
 }

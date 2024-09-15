@@ -87,6 +87,51 @@ void maximum_sum_row()
     }
     cout << "maximum sum of rows:  " << index;
 }
+
+void search_element_in_2d_sorted_array()
+{
+    int matrix[4][4] = {
+        10, 20, 30, 40,
+        50, 60, 70, 80,
+        90, 100, 110, 120,
+        130, 140, 150, 160};
+    int n = 4;
+    int target = 160;
+    // logic 1 start
+
+    // logic 1 end
+    // logic 2 start
+    for (int i = 0; i < n; i++)
+    {
+        if (target >= matrix[i][0] && target <= matrix[i][n - 1])
+        {
+
+            int start = 0, end = n - 1;
+            int mid;
+            while (start <= end)
+            {
+
+                mid = (start + end) / 2;
+                if (matrix[i][mid] == target)
+                {
+                    cout << "found";
+                    break;
+                }
+                else if (matrix[i][mid] < target)
+                {
+
+                    start = mid + 1;
+                }
+                else
+                {
+
+                    end = mid - 1;
+                }
+            }
+        }
+    }
+}
+
 int main()
 {
     // array_creation();
