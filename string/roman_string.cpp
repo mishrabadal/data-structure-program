@@ -42,8 +42,8 @@ void integer_to_roman(){
 
 void factorial(){
     vector<int>ans(1,1);
-    int N=8;
-    int ans;
+    int N=6;
+   
     while (N>1)
     {
       int carry =0,res,size=ans.size();
@@ -62,11 +62,16 @@ void factorial(){
       
     }
     reverse(ans.begin(),ans.end());
+for (int i = 0; i < ans.size(); i++)
+{
+   cout<<ans[i];
+}
 
-    cout<<ans;
+
+   
 }
 
 int main(){
-  roman_to_integer();
+roman_to_integer();
     return 0;
 }

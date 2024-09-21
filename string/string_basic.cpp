@@ -3,7 +3,7 @@
 using namespace std;
 
 void print()
-{
+{N
     char arr[] = {'a', 'b', 'c', 'd'};
     for (int i = 0; i < 4; i++)
     {
