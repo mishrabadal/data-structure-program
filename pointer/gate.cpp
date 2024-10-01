@@ -8,7 +8,7 @@ void question_1()
     // output 2024
     char c[] = "GATE2024";
     char *p = c;
-    cout << p + p[3] - p[1];
+    cout << p +p[3]-p[1] ;
 }
 
 void second(int *p1, int *p2)
@@ -88,9 +88,6 @@ void five(char *str1, char *str2)
 }
 int main()
 {
-    char first[] = "mohit";
-    char second[] = "rohan";
-    five(first, second);
-    cout << first;
+   question_1();
     return 0;
 }

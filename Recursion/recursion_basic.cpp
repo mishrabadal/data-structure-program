@@ -106,8 +106,16 @@ int nth_fibonacci(int n)
     return nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
 }
 
+// nth stair : counting total ways of climbing on stair using 1 step or 2 step at a time
+int total_ways(int n)
+{
+    if (n <= 1)
+        return 1;
+    return total_ways(n - 1) + total_ways(n - 2);
+}
+
 int main()
 {
-    cout << nth_fibonacci(10);
+    cout << total_ways(4);
     return 0;
 }
