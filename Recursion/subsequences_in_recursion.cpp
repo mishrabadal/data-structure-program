@@ -200,12 +200,60 @@ bool find(int arr[], int index, int n, int target)
     // }
 }
 
+// total number of subsets whose sum is equal to target or sum variable ,repeation not allowed
+int subset(int arr[], int index, int sum, int n)
+{
+    // below three line of code will work if all the elements in array is positive
+    // if(sum ==0)
+    // return 1;
+    // if(sum< 0 || index==n)
+    // return 0;
+
+    // below two line of code will work if all the elements in array is non negative
+    if (index == n)
+        return sum == 0; // this statements means it will retutn 1 if condition true otherwise 0
+
+    return subset(arr, index + 1, sum, n) + subset(arr, index + 1, sum - arr[index], n);
+    // output 2
+    //       main()
+    //  {
+
+    //     int arr[] = {1, 2, 3};
+    //     int sum =3;
+    //     int n =3;//size
+    //     cout<<subset(arr,0,sum,n)<<endl;
+
+    //     return 0;
+    // }
+}
+
+// total number of subsets whose sum is equal to target or sum variable repeation allowed
+int subsum(int arr[], int index, int n, int sum)
+{
+    if (sum == 0)
+        return 1;
+    if (index == n || sum < 0)
+        return 0;
+    return subsum(arr, index + 1, n, sum) + subsum(arr, index, n, sum - arr[index]);
+    // output 3
+    //      main()
+    //  {
+
+    //     int arr[] = {1, 2, 3};
+    //     int sum = 3;
+    //     int n = 3; // size
+    //     cout << subsum(arr, 0, sum, n) << endl;
+
+    //     return 0;
+    // }
+}
 int main()
 {
 
-    int arr[] = {1, 2, 3, 4};
-    int target = 6;
-    cout << find(arr, 0, 5, target) << " ";
+    int arr[] = {1, 2, 3};
+    int sum = 3;
+    int n = 3; //size
+    cout << subsum(arr, 0, sum, n) << endl;
 
     return 0;
 }
