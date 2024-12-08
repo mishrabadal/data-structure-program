@@ -43,6 +43,7 @@ void reverse_data(listnode *head)
         i--;
         temp = temp->next;
     }
+    traverse(head);
     // end reversing
 }
 
@@ -127,10 +128,12 @@ void default_linked_list()
             temp = temp->next;
         }
     }
-    // reverse_data(head); method 1
-    // reverse_node(head);//method 2
+
+     //reverse_data(head); //method 1
+    //reverse_node(head);//method 2
     // head=reverse(head,NULL);//method  3
-    middle_element_slow_fast_pointer(head);
+    middle_node(head);
+    // middle_element_slow_fast_pointer(head);
 }
 
 int main()
