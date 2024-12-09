@@ -63,8 +63,11 @@ void removeEveryKNode(listnode *head)
     int k = 3;
     int count = 1;
     if (k == 1)
-        // no any element found;
+    // no any element found;
+    {
+        traverse(head);
         return;
+    }
     while (curr)
     {
         if (k == count)
@@ -166,7 +169,7 @@ void default_linked_list()
     listnode *head;
     listnode *temp;
     head = NULL;
-    int arr[] = {1, 2, 3, 3, 2, 1};
+    int arr[] = {1, 2, 3, 2, 1};
 
     int size = sizeof(arr) / sizeof(arr[0]);
 
