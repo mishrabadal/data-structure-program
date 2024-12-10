@@ -34,7 +34,7 @@ void creation_of_linked_list(int data)
 }
 
 // default linked list
-void insert_multiple_value_in_linked_list()
+void default_linked_list()
 {
     // OUTPUT
     // 1 2 3 4
@@ -42,7 +42,8 @@ void insert_multiple_value_in_linked_list()
     node *temp;
     head = NULL;
     int arr[] = {1, 2, 3, 4};
-    for (int i = 0; i < 4; i++)
+    int size= sizeof(arr)/sizeof(arr[0]);
+    for (int i = 0; i < size; i++)
     {
         if (head == NULL)
         {

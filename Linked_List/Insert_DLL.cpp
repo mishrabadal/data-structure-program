@@ -64,6 +64,38 @@ void i_end(node *head)
     traverse(head);
 }
 
+//insert at end using recursion
+node* createDLL(int arr[], int index, int size, node *back)
+{
+if(index==size)
+return NULL;
+node *temp=new node(arr[index]);
+temp->prev=back;
+temp->next = createDLL(arr,index+1,size,temp);
+return temp;
+}
+
+void i_index(node *head){
+node *curr = head;
+int pos=2;
+while(--pos){
+    curr=curr->next;
+}
+if(curr->next==NULL){
+    node *temp=new node(99);
+    temp->prev=curr;
+    curr->next=temp;
+}
+//insert at middle
+else{
+node *temp=new node(99);
+temp->next=curr->next;
+temp->prev=curr;
+curr->next=temp;
+temp->next->prev=temp;
+traverse(head);
+}
+}
 void default_linkedList()
 {
     // OUTPUT
@@ -88,11 +120,15 @@ void default_linkedList()
             tail = temp;
         }
     }
-    i_end(head);
+   i_index(head);
 }
 
 int main()
 {
     default_linkedList();
+//     int arr[] = {1, 2, 3, 4,5};
+//   node *head=  createDLL(arr,0,5,NULL);
+//   traverse(head);
+
     return 0;
 }
