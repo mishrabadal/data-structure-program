@@ -15,6 +15,8 @@ public:
 
 void traverse(node *temp)
 {
+    cout << endl
+         << endl;
 
     while (temp != NULL)
     {
@@ -82,6 +84,78 @@ node *Remove_Duplicate_Element_From_List_M2(node *head)
     return head;
 }
 // default linked list
+
+node *Merge_two_sorted_list(node *head1, node *head2)
+{
+
+    node *head = new node(0);
+    node *tail = head;
+    while (head1 && head2)
+    {
+        if (head1->data <= head2->data)
+        {
+            tail->next = head1;
+            head1 = head1->next;
+            tail = tail->next;
+            tail->next = NULL;
+        }
+        else
+        {
+            tail->next = head2;
+            head2 = head2->next;
+            tail = tail->next;
+            tail->next = NULL;
+        }
+    }
+    if (head1)
+        tail->next = head1;
+    else
+        tail->next = head2;
+
+    tail = head;
+    head = head->next;
+    delete tail;
+    traverse(head);
+    return head;
+}
+
+node *sort_list_contains_only_0_1_2(node *head)
+{
+
+    node *curr = head;
+    int count0 = 0, count1 = 0, count2 = 0;
+    while (curr)
+    {
+        if (curr->data == 0)
+            count0++;
+        else if (curr->data == 1)
+            count1++;
+        else
+            count2++;
+
+        curr = curr->next;
+    }
+    curr = head;
+    while (count0--)
+    {
+        curr->data = 0;
+        curr = curr->next;
+    }
+
+    while (count1--)
+    {
+        curr->data = 1;
+        curr = curr->next;
+    }
+
+    while (count2--)
+    {
+        curr->data = 2;
+        curr = curr->next;
+    }
+    traverse(head);
+    return head;
+}
 void default_linked_list()
 {
     // OUTPUT
@@ -89,7 +163,7 @@ void default_linked_list()
     node *head;
     node *temp;
     head = NULL;
-    int arr[] = {1, 2, 2, 3, 3, 4, 4, 4};
+    int arr[] = {1, 2, 0, 2, 1, 0, 1};
     int size = sizeof(arr) / sizeof(arr[0]);
     for (int i = 0; i < size; i++)
     {
@@ -104,7 +178,26 @@ void default_linked_list()
             temp = temp->next;
         }
     }
-    Remove_Duplicate_Element_From_List_M2(head);
+    sort_list_contains_only_0_1_2(head);
+    // second  linked list creation
+    // temp = NULL;
+    // node *head2;
+    // head2 = NULL;
+    // for (int i = 4; i < 10; i++)
+    // {
+    //     if (head2 == NULL)
+    //     {
+    //         head2 = temp = new node(arr[i]);
+    //     }
+    //     else
+    //     {
+
+    //         temp->next = new node(arr[i]);
+    //         temp = temp->next;
+    //     }
+    // }
+
+    // traverse(head2);
 }
 int main()
 {
