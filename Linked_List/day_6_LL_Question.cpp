@@ -163,7 +163,7 @@ void default_linked_list()
     node *head;
     node *temp;
     head = NULL;
-    int arr[] = {1, 2, 0, 2, 1, 0, 1};
+    int arr[] = {0,1,2,1,0,2};
     int size = sizeof(arr) / sizeof(arr[0]);
     for (int i = 0; i < size; i++)
     {
@@ -179,11 +179,12 @@ void default_linked_list()
         }
     }
     sort_list_contains_only_0_1_2(head);
-    // second  linked list creation
+  // Remove_Duplicate_Element_From_List_M2(head);
+    //second  linked list creation
     // temp = NULL;
     // node *head2;
     // head2 = NULL;
-    // for (int i = 4; i < 10; i++)
+    // for (int i = 4; i < size; i++)
     // {
     //     if (head2 == NULL)
     //     {
@@ -196,14 +197,12 @@ void default_linked_list()
     //         temp = temp->next;
     //     }
     // }
-
-    // traverse(head2);
 }
 int main()
 {
 
     
-      cout<<mini;
+   
     default_linked_list();
     return 0;
 }

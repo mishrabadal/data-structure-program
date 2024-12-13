@@ -120,7 +120,7 @@ void default_linkedList()
             tail = temp;
         }
     }
-   i_index(head);
+  traverse(head);
 }
 
 int main()
