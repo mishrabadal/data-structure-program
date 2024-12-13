@@ -1,6 +1,7 @@
 #include<iostream>
 #include <bits/stdc++.h>
 using namespace std;
+//important program
 int num(char c){
 if(c=='I')
     return 1;
