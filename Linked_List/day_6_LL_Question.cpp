@@ -55,7 +55,7 @@ node *Remove_Duplicate_Element_From_List_M1(node *head)
         curr = curr->next;
     }
     curr->next = NULL;
-    traverse(head);
+    traverse(head);                            
     return head;
     // input : 1, 2, 2, 3, 3, 4, 4, 4
     // output 1 2 3 4
@@ -201,6 +201,9 @@ void default_linked_list()
 }
 int main()
 {
+
+    
+      cout<<mini;
     default_linked_list();
     return 0;
 }
