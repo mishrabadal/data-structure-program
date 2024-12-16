@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 using namespace std;
 
 void print_1_to_n(int n)
@@ -115,12 +116,81 @@ void Largest_element(int arr[], int n, int index, int &maxi)
         Largest_element(arr, n, index + 1, maxi);
     }
 }
+
+void print_string(string s, int i, int n)
+{
+    if (i == n)
+        return;
+    cout << s[i] << " ";
+    print_string(s, i + 1, n);
+}
+bool match_string(string s, int i, int n, char key)
+{
+    if (i == n)
+        return false;
+    if (s[i] == key)
+        return true;
+    return match_string(s, i + 1, n, key);
+}
+
+// return at which index key matched
+int key_index(string s, int i, int n, char key)
+{
+    if (i == n)
+        return -1;
+    if (s[i] == key)
+        return i;
+    return key_index(s, i + 1, n, key);
+}
+
+void print_table(int n, int i)
+{
+    // base case
+    if (i > 10)
+        return;
+    // processing
+    cout << n * i << " ";
+    // recurence relation
+    print_table(n, i + 1);
+}
+
+int Rev(int n, int reverse)
+{
+    if (n <= 0)
+        return reverse;
+    int rev = reverse * 10 + n % 10;
+    return Rev(n / 10, rev);
+}
+bool palindrome(int n, int reverse, int original)
+{
+    if (n <= 0)
+    {
+        if (reverse == original)
+            return true;
+        else
+            return false;
+    }
+    int rev = reverse * 10 + n % 10;
+    return palindrome(n / 10, rev, original);
+}
+
+string rev_string(string str, int s, int e)
+{
+    if (s > e)
+        return str;
+    swap(str[s], str[e]);
+    return rev_string(str, s + 1, e - 1);
+}
+
+int count_length(string str, int i)
+{
+    if (str[i] == '\0')
+        return i;
+    return count_length(str, i + 1);
+}
 int main()
 {
-    int arr[] = {1, 2, 13, 4, 15};
-    int maxi = INT_MIN;
-    Largest_element(arr, 5, 0, maxi);
-    cout << maxi;
+    cout << count_length("badal", 0);
 
     return 0;
 }
