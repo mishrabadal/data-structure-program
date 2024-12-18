@@ -48,7 +48,7 @@ int power(int n)
 
 int main()
 {
-    cout << find_power(3, 4);
+    cout << "answer is : "<<find_power(3, 4);
     // cout<<power(5);
     return 0;
 }
