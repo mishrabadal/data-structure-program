@@ -39,6 +39,7 @@ int find_power(int a, int b)
     return a * find_power(a, b - 1);
 }
 
+//both are same program
 int power(int n)
 {
     if (n == 1)
