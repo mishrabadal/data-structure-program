@@ -28,16 +28,27 @@ bool binary_search(int arr[], int s, int e, int key)
         return binary_search(arr, s + 1, e, key);
     else
         return binary_search(arr, s, e - 1, key);
-        
+}
+
+int find_power(int a, int b)
+{
+
+    if (b == 1)
+        return a;
+
+    return a * find_power(a, b - 1);
+}
+
+int power(int n)
+{
+    if (n == 1)
+        return 2;
+    return 2 * power(n - 1);
 }
 
 int main()
 {
-    int arr[] = {1, 2, 3, 4};
-    cout << binary_search(arr, 0, 3, 1);
-
-    string ans = 2 > 3 ? "yes" : "no";
-    cout << ans;
-
+    cout << find_power(3, 4);
+    // cout<<power(5);
     return 0;
 }
