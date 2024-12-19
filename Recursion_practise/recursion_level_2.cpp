@@ -30,6 +30,19 @@ bool binary_search(int arr[], int s, int e, int key)
         return binary_search(arr, s, e - 1, key);
 }
 
+int key_index(int arr[], int s, int e, int key)
+{
+    if (s > e)
+        return -1;
+    int mid = s + (e - s) / 2;
+    if (arr[mid] == key)
+        return mid;
+    else if (key > arr[mid])
+        return key_index(arr, s + 1, e, key);
+    else
+        return key_index(arr, s, e - 1, key);
+}
+
 int find_power(int a, int b)
 {
 
@@ -39,17 +52,81 @@ int find_power(int a, int b)
     return a * find_power(a, b - 1);
 }
 
-//both are same program
-int power(int n)
+int min_element(int arr[], int index, int n)
+{
+    if (index == n - 1)
+    {
+        return arr[index];
+    }
+    return min(arr[index], min_element(arr, index + 1, n));
+}
+
+void print_even(int num, int n)
+{
+    if (num > n)
+        return;
+    cout << num << "  ";
+    print_even(num + 2, n);
+}
+
+void p_even(int n)
+{
+    if (n == 2)
+    {
+        cout << 2 << " ";
+        return;
+    }
+
+    p_even(n - 2);
+    cout << n << " ";
+}
+
+void p_odd(int n)
 {
     if (n == 1)
-        return 2;
-    return 2 * power(n - 1);
+    {
+        cout << 1 << " ";
+        return;
+    }
+
+    p_odd(n - 2);
+    cout << n << " ";
 }
+
+void p_natural(int n)
+{
+    if (n == 1)
+    {
+        cout << 1 << " ";
+        return;
+    }
+    p_natural(n - 1);
+    cout << n << " ";
+}
+
+int sum_element(int arr[], int n, int i)
+{
+    if (i == n - 1)
+        return arr[i];
+    return arr[i] + sum_element(arr, n, i + 1);
+}
+
+int sum_digit(int n){
+    if(n==0)
+    return 0;
+    return n%10+sum_digit(n/10);
+}
+
+int digit_square_sum(int n){
+    if(n==0)
+    return 0;
+    return (n%10)*(n%10)+ digit_square_sum(n/10);
+}
+ 
+
 
 int main()
 {
-    cout << "answer is : "<<find_power(3, 4);
-    // cout<<power(5);
+cout<<find_power(3,4);
     return 0;
 }

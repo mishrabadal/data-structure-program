@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 void print_1_to_n(int n)
@@ -188,9 +189,41 @@ int count_length(string str, int i)
         return i;
     return count_length(str, i + 1);
 }
+
+int count_vowel(string str, int i)
+{
+    if (str[i] == '\0')
+        return 0;
+    if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
+        return 1 + count_vowel(str, i + 1);
+    return count_vowel(str, i + 1);
+}
+
+string convert_to_upper(string str, int i)
+{
+    if (str[i] == '\0')
+        return str;
+    str[i] = str[i] - 'a' + 'A';
+    return convert_to_upper(str, i + 1);
+}
+
+bool check_palindrome(string str,int s ,int e){
+if(s>e)
+return 1;
+if(str[s] !=str[e])
+return 0;
+else
+return check_palindrome(str,s+1,e-1);
+
+}
+
+void subsequence(int arr[],int index,int n,vector<vector<int>>&ans,vector<int>temp){
+
+}
 int main()
 {
-    cout << count_length("badal", 0);
+
+    cout <<check_palindrome("nitin",0,4);
 
     return 0;
 }
