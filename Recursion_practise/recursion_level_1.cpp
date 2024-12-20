@@ -217,13 +217,10 @@ return check_palindrome(str,s+1,e-1);
 
 }
 
-void subsequence(int arr[],int index,int n,vector<vector<int>>&ans,vector<int>temp){
 
-}
 int main()
 {
 
-    cout <<check_palindrome("nitin",0,4);
-
+cout<<"hello";
     return 0;
 }
