@@ -10,11 +10,12 @@ int main()
     st.push(s[i]);
    }
    int i=0;
-   while(!s.empty())
+   while(!st.empty())
    {
     s[i]=st.top();
     i++;
-    st.pop();d
+    st.pop();
    }
+   cout<<s;
     return 0;
 }
