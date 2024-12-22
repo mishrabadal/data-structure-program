@@ -63,14 +63,14 @@ public:
 int main()
 {
     stack s(5);
-    s.push(5);
     s.push(6);
     s.push(7);
-    s.push(8);   
-    //s.push(3);
-  
-   // cout << s.IsEmpty();
+    s.push(8);
+
     cout << s.peek();
+    cout << s.IsEmpty();
+    cout << s.IsSize();
+    s.pop();
 
     return 0;
 }

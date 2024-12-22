@@ -42,7 +42,7 @@ public:
     {
         if (top == NULL)
         {
-            cout << "sack is underflow\n";
+            cout << "stack is underflow\n";
         }
         else
         {
@@ -82,17 +82,18 @@ int main()
 
     stack s;
 
-    for (int i = 1; i < 6; i++)
+    for (int i = 6; i < 9; i++)
     {
-        s.push(i + 2);
+        s.push(i);
     }
-    s.pop();
+ 
     cout << endl;
     cout << s.IsSize();
     cout << endl;
     cout << s.peek();
     cout << endl;
     cout << s.IsEmpty();
+       s.pop();
 
     return 0;
 }
