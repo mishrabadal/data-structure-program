@@ -5,6 +5,9 @@ int main()
 {
    stack<char>st;
    string s="badal";
+
+   cout<<s<<endl;
+   
    for(int i=0;i<s.size();i++)
    {
     st.push(s[i]);
