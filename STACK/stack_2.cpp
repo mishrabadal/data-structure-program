@@ -210,10 +210,62 @@ bool isValid(string s)
     return st.empty();
 }
 
+vector<int> Print_Bracket_number(string s)
+{
+    int count = 0;
+    stack<int> st;
+    vector<int> ans;
+    for (int i = 0; i < s.size(); i++)
+    {
+        // opening bracket
+        if (s[i] == '(')
+        {
+            count++;
+            st.push(count);
+            ans.push_back(count);
+        }
+        // closing bracket
+        else if (s[i] == ')')
+        {
+            ans.push_back(st.top());
+            st.pop();
+        }
+    }
+    return ans;
+    // output
+    //  1 2 2 1 3 3
+    //  main(){
+    //      vector<int>s=   Print_Bracket_number("(aa(bdc))p(dee)");
+    //  for (int i = 0; i < s.size(); i++)
+    //  {
+    //      cout<<s[i]<<" ";
+    //  }
+    //  }
+}
+
+void get_minimum_at_pop(int arr[], int n)
+{
+    stack<int> st;
+    for (int i = 0; i < n; i++)
+    {
+        if (i == 0)
+            st.push(arr[i]);
+        else
+            st.push(min(arr[i], st.top()));
+    }
+
+    print_stack(st);
+    // output : 0 0 1 1 1 2
+    //  main(){
+    //      int arr[]={2,1,3,5,0,6};
+    //      get_minimum_at_pop(arr,6);
+    //  }
+}
 int main()
 {
 
-    cout << isValid("[(){()}]");
+    int arr[] = {2, 1, 3, 5, 0, 6};
+    get_minimum_at_pop(arr, 6);
 
     return 0;
 }
