@@ -94,7 +94,11 @@ void make_beautiful()
         s.pop();
     }
 
-    cout << ans[0] << " " << ans[1];
+    // cout << ans[0] << " " << ans[1];
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << " ";
+    }
 }
 
 // string manipulation
