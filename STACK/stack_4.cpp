@@ -148,8 +148,7 @@ int maximalRectangle()
 
 int main()
 {
-    //    int heights[] = {2,1,5,6,2,3};
-    //    cout<<Rect_area(heights);
+
     cout << maximalRectangle();
     return 0;
 }
