@@ -3,7 +3,8 @@
 #include <stack>
 using namespace std;
 
-//Maximum of minimum for every window size
+// Maximum of minimum for every window size
+
 void maxOfMin()
 {
     // Your code here
@@ -28,7 +29,7 @@ void maxOfMin()
 
 int main()
 {
-    
+
     maxOfMin();
     return 0;
 }
