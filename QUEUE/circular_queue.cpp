@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-//implementation using default array
+// implementation using circular array or circular queue O(n)
 class queue
 {
     int *arr;
@@ -21,7 +21,7 @@ public:
 
     bool isFull()
     {
-        return rear == size - 1;
+        return (rear + 1) % size == front;
     }
 
     void push(int x)
@@ -30,16 +30,19 @@ public:
         {
             front = rear = 0;
             arr[0] = x;
+            cout << x << " push into queue" << endl;
         }
         else if (isFull())
         {
-            cout << "queue is overflow";
+            cout << "queue is overflow\n";
             return;
         }
         else
         {
-            rear = rear + 1;
+
+            rear = (rear + 1) % size;
             arr[rear] = x;
+            cout << x << " push into queue" << endl;
         }
     }
 
@@ -47,7 +50,7 @@ public:
     {
         if (isEmpty())
         {
-            cout << "queue underflow";
+            cout << "queue underflow\n";
             return;
         }
         else
@@ -58,7 +61,7 @@ public:
             }
             else
             {
-                front = front + 1;
+                front = (front + 1) % size;
             }
         }
     }
@@ -67,7 +70,7 @@ public:
     {
         if (isEmpty())
         {
-            cout << "queue is empty";
+            cout << "queue is empty\n";
             return -1;
         }
         else
@@ -80,14 +83,6 @@ public:
     {
         return rear - front + 1;
     }
-
-    void print()
-    {
-        for (int i = front; i <= rear; i++)
-        {
-            cout << arr[i] << endl;
-        }
-    }
 };
 int main()
 {
@@ -97,12 +92,10 @@ int main()
     {
         q.push(i + 10);
     }
-    cout << q.isEmpty() << endl;
-    cout << q.isFull() << endl;
-    cout << q.start() << endl;
-    cout << q.isSize() << endl;
     q.pop();
-    q.print();
+    q.pop();
+    q.pop();
+    q.push(4);
 
     return 0;
 }
