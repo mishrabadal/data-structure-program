@@ -79,10 +79,7 @@ public:
         }
     }
 
-    int isSize()
-    {
-        return rear - front + 1;
-    }
+
 };
 int main()
 {
@@ -96,6 +93,6 @@ int main()
     q.pop();
     q.pop();
     q.push(4);
-
+   
     return 0;
 }

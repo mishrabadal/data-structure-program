@@ -83,6 +83,7 @@ public:
 
     void print()
     {
+        cout<<"\n---elements are----\n";
         for (int i = front; i <= rear; i++)
         {
             cout << arr[i] << endl;
