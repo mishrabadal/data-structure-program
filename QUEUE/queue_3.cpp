@@ -2,127 +2,142 @@
 using namespace std;
 #include <queue>
 #include <stack>
-
-// print all element of queue with using extra space, space complexity O(n)
-// method 1;
-void print_all_element(queue<int> &q)
+// print all number in every window of size k
+void display(queue<int> q)
 {
-    vector<int> ans;
     while (!q.empty())
     {
         cout << q.front() << " ";
-        ans.push_back(q.front());
         q.pop();
     }
-    for (int i = 0; i < ans.size(); i++)
-    {
-        q.push(ans[i]);
-    }
+    cout << endl;
 }
-
-// method 2
-// space complexity O(1);
-void print_queue(queue<int> &q)
+void print_all_number_of_window()
 {
-    int n = q.size();
-    while (n--)
-    {
-        cout << q.front() << " ";
-        q.push(q.front());
-        q.pop();
-    }
-}
-
-void queue_reversal(queue<int> &q)
-{
-    stack<int> st;
-    while (!q.empty())
-    {
-        st.push(q.front());
-        q.pop();
-    }
-    while (!st.empty())
-    {
-        q.push(st.top());
-        st.pop();
-    }
-    print_queue(q);
-}
-
-// reverse first k element of queue (without using an extra array)
-void reverse_first_k_element(queue<int> q)
-{
+    int arr[] = {3, 6, 2, 7, 8, 11};
+    int n = 6;
     int k = 3;
-    stack<int> st;
-    while (k--)
-    {
-        st.push(q.front());
-        q.pop();
-    }
-    int n = q.size();
-    while (!st.empty())
-    {
-        q.push(st.top());
-        st.pop();
-    }
-    while (n--)
-    {
-        q.push(q.front());
-        q.pop();
-    }
-    print_queue(q);
-}
-
-// time needed to buy tickets
-void time_required_to_buy_tickets()
-{
-    int tickets[] = {1, 5, 2, 3, 7};
     queue<int> q;
-    int n = 5;
-    int k = 2; // index which required ticket
-    for (int i = 0; i < n; i++)
-        q.push(i);
-    int time = 0;
-    while (tickets[k] != 0)
+    for (int i = 0; i < k - 1; i++)
     {
-        tickets[q.front()]--;
-        if (tickets[q.front()])
-            q.push(q.front());
+        q.push(arr[i]);
+    }
+    for (int i = k - 1; i < n; i++)
+    {
+        q.push(arr[i]);
+        display(q);
         q.pop();
-        time++;
     }
-    cout << "time required to get ticket is : " << time;
 }
 
-void time_required_to_buy_tickets_m2()
+// first negative integer in every window of size k
+// method 1 : basic method
+int first_negative(queue<int> q)
 {
-    int tickets[] = {1, 5, 2, 3, 7};
+    while (!q.empty())
+    {
+        if (q.front() < 0)
+            return q.front();
+        q.pop();
+    }
+    return 0;
+}
+// T(n)=o(n+k)
+void first_negative_integer_of_window()
+{
+    int arr[] = {2, -3, -4, -2, 7, 8, 9, -10};
+    int n = 8;
+    int k = 3;
     queue<int> q;
-    int n = 5;
-    int k = 2; // index which required ticket
-    int time = 0;
-
-    for (int i = 0; i <= k; i++)
+    vector<int> ans;
+    for (int i = 0; i < k - 1; i++)
     {
-        time += min(tickets[k], tickets[i]);
+        q.push(arr[i]);
     }
-    for (int i = k + 1; i < n; i++)
+    for (int i = k - 1; i < n; i++)
     {
-        time += min(tickets[k] - 1, tickets[i]);
+        q.push(arr[i]);
+        ans.push_back(first_negative(q));
+        q.pop();
     }
-
-    cout << "time required to get ticket is : " << time;
+    for (auto i : ans)
+        cout << i << " ";
 }
 
+// method 2 : baap method
+void first_negative_integer_of_window_m2()
+{
+    int arr[] = {2, -3, -4, -2, 7, 8, 9, -10};
+    int n = 8;
+    int k = 3;
+    queue<int> q;
+    vector<int> ans;
+    for (int i = 0; i < k - 1; i++)
+    {
+        if (arr[i] < 0)
+        {
+            q.push(i);
+        }
+    }
+    for (int i = k - 1; i < n; i++)
+    {
+
+        if (arr[i] < 0)
+            q.push(i);
+        if (q.empty())
+            ans.push_back(0);
+        else
+        {
+            if (q.front() <= i - k)
+                q.pop();
+            if (q.empty())
+                ans.push_back(0);
+            else
+                ans.push_back(arr[q.front()]);
+        }
+    }
+    for (auto i : ans)
+        cout << i << " ";
+}
+
+// first no repeating char in a stream of characters
+
+void no_repeating_char_stram()
+{
+    string a = "ababdc";
+    string b = "";
+    vector<int> repeated(26, 0);
+    queue<char> q;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (repeated[a[i] - 'a'] >= 1)
+        {
+            repeated[a[i] - 'a']++;
+            while (!q.empty() && repeated[q.front() - 'a'] > 1)
+            {
+                q.pop();
+            }
+            if (q.empty())
+                b += '#';
+            else
+                b += q.front();
+        }
+        else
+        {
+            repeated[a[i] - 'a']++;
+            q.push(a[i]);
+            while (repeated[q.front() - 'a'] > 1)
+            {
+                q.pop();
+            }
+            b += q.front();
+        }
+    }
+    cout << b << endl;
+}
 int main()
 {
-    time_required_to_buy_tickets_m2();
-    queue<int> q;
-    for (int i = 0; i < 5; i++)
-    {
-        q.push(i + 1);
-    }
-    // reverse_first_k_element(q);
 
+    no_repeating_char_stram();
     return 0;
 }
