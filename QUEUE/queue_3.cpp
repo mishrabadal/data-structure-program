@@ -101,8 +101,7 @@ void first_negative_integer_of_window_m2()
 }
 
 // first no repeating char in a stream of characters
-
-void no_repeating_char_stram()
+void no_repeating_char_stream()
 {
     string a = "ababdc";
     string b = "";
@@ -138,6 +137,6 @@ void no_repeating_char_stram()
 int main()
 {
 
-    no_repeating_char_stram();
+    first_negative_integer_of_window_m2();
     return 0;
 }

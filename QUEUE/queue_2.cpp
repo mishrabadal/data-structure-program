@@ -116,13 +116,13 @@ void time_required_to_buy_tickets_m2()
 
 int main()
 {
-    time_required_to_buy_tickets_m2();
+   // time_required_to_buy_tickets_m2();
     queue<int> q;
     for (int i = 0; i < 5; i++)
     {
         q.push(i + 1);
     }
-    // reverse_first_k_element(q);
+    time_required_to_buy_tickets_m2();
 
     return 0;
 }

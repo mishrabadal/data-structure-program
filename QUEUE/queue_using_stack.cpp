@@ -60,8 +60,6 @@ public:
     }
 };
 
-
-
 int main()
 {
     MyQueue q;
@@ -69,6 +67,10 @@ int main()
     {
         q.push(i + 1);
     }
+    cout << q.empty();
+
+    q.pop();
+    cout << q.peek();
 
     return 0;
 }
