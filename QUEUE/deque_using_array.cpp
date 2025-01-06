@@ -112,22 +112,43 @@ public:
             return arr[rear];
     }
 
-    // void print()
-    // {
-    //     cout << "\n----------elements are----------\n";
-    //     cout<<front<<endl<<rear;
-    // }
+    void print()
+    {
+        int start = front, end = rear;
+        cout << start << endl
+             << end;
+
+        cout << "\n----------elements are----------\n";
+
+        if (start == -1 || rear == -1)
+            return;
+        if (start < end)
+        {
+            for (int i = start; i <= end; i++)
+                cout << arr[i] << " ";
+        }
+        else
+        {
+            for (int i = start; i < size; i++)
+                cout << arr[i] << " ";
+            for (int i = 0; i <= end; i++)
+                cout << arr[i] << " ";
+        }
+    }
 };
 
 int main()
 {
     Deque dq(5);
     dq.push_front(1), dq.push_front(2), dq.push_front(3);
-    dq.push_back(4), dq.push_back(5);
+    dq.push_back(4);
+    dq.push_back(5);
     dq.pop_back();
 
-    cout << "\nfirst element in queue : " << dq.start() << endl;
-    cout << "last element in queue : " << dq.end() << endl;
+    dq.pop_front();
 
+    cout << "first element in queue : " << dq.start() << endl;
+    cout << "last element in queue : " << dq.end() << endl;
+    dq.print();
     return 0;
 }
