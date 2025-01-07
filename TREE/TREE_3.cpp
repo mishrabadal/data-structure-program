@@ -40,15 +40,7 @@ node *default_bt()
     return root;
 }
 
-void bt_size(node *root, int &count)
-{
-
-    if (root == NULL)
-        return;
-    count++;
-    bt_size(root->left, count);
-    bt_size(root->right, count);
-}
+// traverse the node level wise
 void level_order_traversal(node *root)
 {
     queue<node *> q;
@@ -70,13 +62,83 @@ void level_order_traversal(node *root)
         cout << i << " ";
 }
 
+// count total node in binary tree
+// method 1 same as pre order traversal
+void total_node(node *root, int &count)
+{
+
+    if (root == NULL)
+        return;
+    count++;
+    total_node(root->left, count);
+    total_node(root->right, count);
+}
+// method 2
+int total_node(node *root)
+{
+    if (root == NULL)
+        return 0;
+    return (1 + total_node(root->left) + total_node(root->right));
+}
+
+// total sum of node element
+// method 1
+void total_sum(node *root, int &sum)
+{
+
+    if (root == NULL)
+        return;
+    sum = sum + root->data;
+    total_sum(root->left, sum);
+    total_sum(root->right, sum);
+}
+// method 2
+int total_sum(node *root)
+{
+    if (root == NULL)
+        return 0;
+    return (root->data + total_sum(root->left) + total_sum(root->right));
+}
+
+// count total leaf node
+// method 1
+void count_leaf(node *root, int &count)
+{
+    if (root == NULL)
+        return;
+    if (!root->left && !root->right)
+    {
+        count++;
+        return;
+    }
+    count_leaf(root->left, count);
+    count_leaf(root->right, count);
+}
+// method 2
+int count_leaf(node *root)
+{
+    if (root == NULL)
+        return 0;
+    if (!root->left && !root->right)
+    {
+        return 1;
+    }
+    return (count_leaf(root->left) + count_leaf(root->right));
+}
+
 int main()
 {
     node *root = default_bt();
     // level_order_traversal(root);
 
     int count = 0;
-    bt_size(root, count);
-    cout << "total number of node in binary tree : " <<count << endl;
+    count_leaf(root, count);
+    cout << count << endl;
+    cout << count_leaf(root);
+    // cout << "total number of node in binary tree : " << count << endl;
+
+    //     int sum =0;
+    //  total_sum(root,sum);
+    //  cout<<sum;
     return 0;
 }
