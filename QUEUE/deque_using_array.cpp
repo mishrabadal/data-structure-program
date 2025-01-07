@@ -145,8 +145,6 @@ int main()
     dq.push_back(5);
     dq.pop_back();
 
-    dq.pop_front();
-
     cout << "first element in queue : " << dq.start() << endl;
     cout << "last element in queue : " << dq.end() << endl;
     dq.print();

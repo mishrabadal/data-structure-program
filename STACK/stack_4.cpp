@@ -148,7 +148,7 @@ int maximalRectangle()
 
 int main()
 {
-
-    cout << maximalRectangle();
+cout<<maximalRectangle();
+    //cout << maximalRectangle();
     return 0;
 }
