@@ -67,7 +67,7 @@ void post_order(node *root)
 int main()
 {
 
-    // list<int> arr{1,2,3,4,-1,-1,5,-1,-1,-1,20,-1,-1};
+     //list<int> arr{1,2,3,4,-1,-1,5,-1,-1,-1,20,-1,-1};
     list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, 6, -1, -1, 7, -1, 8, 9, -1, -1, 10, -1, -1};
     // cout<<arr.front();
     // arr.pop_front();
