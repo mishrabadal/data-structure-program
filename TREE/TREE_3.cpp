@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <bits/stdc++.h>
+#include <math.h>
 class node
 {
 public:
@@ -34,7 +35,7 @@ node *default_bt()
 {
     list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, -1, 20, -1, -1};
     // list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, 6, -1, -1, 7, -1, 8, 9, -1, -1, 10, -1, -1};
-    // cout << "enter the root node : " << arr.front();
+    //  cout << "enter the root node : " << arr.front();
     node *root;
     root = binary_tree(arr);
     return root;
@@ -126,15 +127,33 @@ int count_leaf(node *root)
     return (count_leaf(root->left) + count_leaf(root->right));
 }
 
+// count non leaf node
+int NonLeaf(node *root)
+{
+    if (root == NULL)
+        return 0;
+    // agar dono null hai to return 0;
+    if (!root->left && !root->right)
+        return 0;
+    return (1 + NonLeaf(root->left) + NonLeaf(root->right));
+}
+
+int height(node *root)
+{
+    if (root == NULL)
+        return 0;
+    return (1 + max(height(root->left), height(root->right)));
+}
 int main()
 {
-    node *root = default_bt();
-    // level_order_traversal(root);
 
-    int count = 0;
-    count_leaf(root, count);
-    cout << count << endl;
-    cout << count_leaf(root);
+    node *root = default_bt();
+    ///level_order_traversal(root);
+     cout<<height(root);
+    // int count = 0;
+    // count_leaf(root, count);
+    // cout << count << endl;
+    // cout << count_leaf(root);
     // cout << "total number of node in binary tree : " << count << endl;
 
     //     int sum =0;
