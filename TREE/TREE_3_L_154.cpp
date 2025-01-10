@@ -33,7 +33,9 @@ Node *binary_tree(list<int> &arr)
 }
 Node *default_bt()
 {
-    list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, -1, 20, -1, -1};
+    // list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, -1, 20, -1, -1}; //primary tree
+    list<int> arr{10, 20, 40, -1, -1, 60, -1, -1, 30, -1, -1}; // balanced binary tree
+
     // list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, 6, -1, -1, 7, -1, 8, 9, -1, -1, 10, -1, -1};
     //  cout << "enter the root Node : " << arr.front();
     Node *root;
@@ -60,22 +62,58 @@ void level_order_traversal(Node *root)
     for (auto i : ans)
         cout << i << " ";
 }
-bool isIdentical(Node *r1, Node*r2)
+bool isIdentical(Node *r1, Node *r2)
 {
-if(r1==NULL && r2==NULL)
-return 1;
-if((!r1 && r2) || (r1 && !r2))
-return 0;
-if(r1->data != r2->data)
-return 0;
-return (isIdentical(r1->left ,r2->left) && isIdentical(r1->right , r2->right));
+    if (r1 == NULL && r2 == NULL)
+        return 1;
+    if ((!r1 && r2) || (r1 && !r2))
+        return 0;
+    if (r1->data != r2->data)
+        return 0;
+    return (isIdentical(r1->left, r2->left) && isIdentical(r1->right, r2->right));
+}
 
+void mirror(Node *&root)
+{
+    if (!root)
+        return;
+
+    Node *temp = root->right;
+    root->right = root->left;
+    root->left = temp;
+
+    // left
+    mirror(root->left);
+    // right
+    mirror(root->right);
+}
+int height(Node *root, bool &valid)
+{
+if(!root)
+return 0;
+int L =height(root->left,valid);
+int R =height(root->right,valid);
+
+//balanced condition
+if(abs(L-R)>1)
+valid =0;
+
+return 1+max(L,R);
+
+}
+bool isBalanced(Node *root)
+{
+   bool valid =1;
+   height(root,valid);
+   return valid;
 }
 int main()
 {
 
     Node *root = default_bt();
-  // level_order_traversal(root);
-   cout<<isIdentical(root,root);
+    //level_order_traversal(root);
+    //    mirror(root);
+       cout<<isBalanced(root);
+    //    level_order_traversal(root);
     return 0;
 }
