@@ -89,31 +89,74 @@ void mirror(Node *&root)
 }
 int height(Node *root, bool &valid)
 {
-if(!root)
-return 0;
-int L =height(root->left,valid);
-int R =height(root->right,valid);
+    if (!root)
+        return 0;
+    int L = height(root->left, valid);
+    int R = height(root->right, valid);
 
-//balanced condition
-if(abs(L-R)>1)
-valid =0;
+    // balanced condition
+    if (abs(L - R) > 1)
+        valid = 0;
 
-return 1+max(L,R);
-
+    return 1 + max(L, R);
 }
 bool isBalanced(Node *root)
 {
-   bool valid =1;
-   height(root,valid);
-   return valid;
+    bool valid = 1;
+    height(root, valid);
+    return valid;
+}
+
+void findSpiral(Node *root)
+{
+    stack<Node *> s1; // R to L
+    stack<Node *> s2; // L to R
+    s1.push(root);
+    vector<int> ans;
+    while (!s1.empty() || !s2.empty())
+    {
+        // R to L
+        if (!s1.empty())
+        {
+            while (!s1.empty())
+            {
+                Node *temp = s1.top();
+                s1.pop();
+                ans.push_back(temp->data);
+                if (temp->right)
+                    s2.push(temp->right);
+                if (temp->left)
+                    s2.push(temp->left);
+            }
+        }
+        // L to R
+        else
+        {
+            while (!s2.empty())
+            {
+                Node *temp = s2.top();
+                s2.pop();
+                ans.push_back(temp->data);
+                if (temp->left)
+                    s1.push(temp->left);
+                if (temp->right)
+                    s1.push(temp->right);
+            }
+        }
+    }
+    for(auto i: ans) 
+    cout<<i<<" ";
+
+
 }
 int main()
 {
 
     Node *root = default_bt();
-    //level_order_traversal(root);
-    //    mirror(root);
-       cout<<isBalanced(root);
+    // level_order_traversal(root);
+    //     mirror(root);
+    findSpiral(root);
+   // cout << isBalanced(root);
     //    level_order_traversal(root);
     return 0;
 }
