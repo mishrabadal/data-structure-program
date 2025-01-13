@@ -1,20 +1,21 @@
 #include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
+bool comparator(int a, int b)
+{
+ return a<b;
+}
 int main()
 {
-    int x;
-    for (int i = 1; i <= 4; i++)
-    {
-        cout<<i<<endl<<endl;
-        for (int j = 1; j <= i; j++)
-        {
-            for (int k = 1; k <= j; k++)
-            {
-                x=x+i;
-            cout << "nce" << endl;
-            }
-        }
-    }
+vector<int>arr={11,2,3,7};
 
+
+sort(arr.begin(),arr.end(),comparator);
+for(auto i : arr)
+    cout<<i<<" ";
     return 0;
 }
+
+
+
+  

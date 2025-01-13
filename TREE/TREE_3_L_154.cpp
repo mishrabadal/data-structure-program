@@ -107,7 +107,7 @@ bool isBalanced(Node *root)
     return valid;
 }
 
-//traversal binary tree in spiral order
+// traversal binary tree in spiral order
 void findSpiral(Node *root)
 {
     stack<Node *> s1; // R to L
@@ -137,7 +137,7 @@ void findSpiral(Node *root)
             {
                 Node *temp = s2.top();
                 s2.pop();
-                ans.push_back(temp->data);  
+                ans.push_back(temp->data);
                 if (temp->left)
                     s1.push(temp->left);
                 if (temp->right)
@@ -145,10 +145,53 @@ void findSpiral(Node *root)
             }
         }
     }
-    for(auto i: ans) 
-    cout<<i<<" ";
+    for (auto i : ans)
+        cout << i << " ";
+}
 
+bool parent(Node *root, int a, int b)
+{
+    if (!root)
+        return 0;
+    if (root->left && root->right)
+    {
+        if (root->left->data == a && root->right->data == b)
+            return 1;
+        if (root->left->data == b && root->right->data == a)
+            return 1;
+    }
+    return (parent(root->left, a, b) || parent(root->right, a, b));
+}
 
+bool isCousins(Node *root, int a, int b)
+{
+    queue<Node*> q;
+    q.push(root);
+    int l1 = -1, l2 = -2;
+    int level = 0;
+    while (!q.empty())
+    {
+        int n = q.size();
+        while (n--)
+        {
+            Node *temp = q.front();
+            q.pop();
+            if (temp->data == a)
+                l1 = level;
+            if (temp->data == b)
+                l2 = level;
+            if (temp->left)
+                q.push(temp->left);
+            if (temp->right)
+                q.push(temp->right);
+        }
+        level++;
+        if (l1 != l2)
+            return 0;
+        if (l1 != -1)
+            break;
+    }
+    return !parent(root, a, b);
 }
 int main()
 {
@@ -156,8 +199,9 @@ int main()
     Node *root = default_bt();
     // level_order_traversal(root);
     //     mirror(root);
-    findSpiral(root);
-   // cout << isBalanced(root);
+    //findSpiral(root);
+    cout<<isCousins(root,40,30);
+    // cout << isBalanced(root);
     //    level_order_traversal(root);
     return 0;
 }
