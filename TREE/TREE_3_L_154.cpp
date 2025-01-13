@@ -107,6 +107,7 @@ bool isBalanced(Node *root)
     return valid;
 }
 
+//traversal binary tree in spiral order
 void findSpiral(Node *root)
 {
     stack<Node *> s1; // R to L
@@ -136,7 +137,7 @@ void findSpiral(Node *root)
             {
                 Node *temp = s2.top();
                 s2.pop();
-                ans.push_back(temp->data);
+                ans.push_back(temp->data);  
                 if (temp->left)
                     s1.push(temp->left);
                 if (temp->right)
