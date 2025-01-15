@@ -31,10 +31,11 @@ Node *binary_tree(list<int> &arr)
     temp->right = binary_tree(arr);
     return temp;
 }
+
 Node *default_bt()
 {
     // list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, -1, 20, -1, -1}; //primary tree
-    list<int> arr{10, 20, 40, -1, -1, 60, -1, -1, 30, -1, -1}; // balanced binary tree
+    list<int> arr{10, 20, 40, -1, -1, 60, -1, -1, 30, 80, -1, -1, 90, -1, -1}; // balanced binary tree
 
     // list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, 6, -1, -1, 7, -1, 8, 9, -1, -1, 10, -1, -1};
     //  cout << "enter the root Node : " << arr.front();
@@ -42,6 +43,7 @@ Node *default_bt()
     root = binary_tree(arr);
     return root;
 }
+
 void level_order_traversal(Node *root)
 {
     queue<Node *> q;
@@ -165,9 +167,9 @@ bool parent(Node *root, int a, int b)
 
 bool isCousins(Node *root, int a, int b)
 {
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(root);
-    int l1 = -1, l2 = -2;
+    int l1 = -1, l2 = -1;
     int level = 0;
     while (!q.empty())
     {
@@ -199,8 +201,8 @@ int main()
     Node *root = default_bt();
     // level_order_traversal(root);
     //     mirror(root);
-    //findSpiral(root);
-    cout<<isCousins(root,40,30);
+    // findSpiral(root);
+    cout << isCousins(root, 40, 80);
     // cout << isBalanced(root);
     //    level_order_traversal(root);
     return 0;
