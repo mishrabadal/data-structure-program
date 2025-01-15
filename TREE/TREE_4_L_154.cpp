@@ -64,6 +64,8 @@ void level_order_traversal(Node *root)
     for (auto i : ans)
         cout << i << " ";
 }
+
+
 bool isIdentical(Node *r1, Node *r2)
 {
     if (r1 == NULL && r2 == NULL)
@@ -89,6 +91,7 @@ void mirror(Node *&root)
     // right
     mirror(root->right);
 }
+
 int height(Node *root, bool &valid)
 {
     if (!root)
@@ -102,6 +105,7 @@ int height(Node *root, bool &valid)
 
     return 1 + max(L, R);
 }
+
 bool isBalanced(Node *root)
 {
     bool valid = 1;
@@ -199,10 +203,13 @@ int main()
 {
 
     Node *root = default_bt();
+     //  level_order_traversal(root);
+    //  bool valid =1;
+    //  findSpiral(root);
     // level_order_traversal(root);
     //     mirror(root);
     // findSpiral(root);
-    cout << isCousins(root, 40, 80);
+   cout << isCousins(root, 40, 80);
     // cout << isBalanced(root);
     //    level_order_traversal(root);
     return 0;

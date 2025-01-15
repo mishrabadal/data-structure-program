@@ -35,7 +35,7 @@ Node *binary_tree(list<int> &arr)
 }
 Node *default_bt()
 {
-    list<int> arr{1, 2, 3, 4, -1, -1, 5, -1, -1, -1, 20, -1, -1}; // primary tree
+     list<int> arr{10, 20, 40, -1, -1, 60, -1, -1, 30, 80, -1, -1, 90, -1, -1}; // primary tree
     // list<int> arr{10, 20, 40, -1, -1, 60, -1, -1, 30, -1, -1}; // balanced binary tree
 
     Node *root;
@@ -89,9 +89,9 @@ int main()
     Node *root = default_bt();
     vector<int> ans;
     int level = 0;
-    L_view(root, level, ans);
-    for(auto i : ans )
-    cout<<i<<"  ";
-   // leftView(root);
+    // L_view(root, level, ans);
+    // for(auto i : ans )
+    // cout<<i<<"  ";
+   leftView(root);
     return 0;
 }
