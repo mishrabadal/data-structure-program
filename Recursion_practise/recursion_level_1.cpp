@@ -221,6 +221,6 @@ return check_palindrome(str,s+1,e-1);
 int main()
 {
 
-cout<<"hello";
+cout<<check_palindrome("noon",0,3);
     return 0;
 }
