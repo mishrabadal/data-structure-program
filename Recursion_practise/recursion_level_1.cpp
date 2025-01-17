@@ -221,6 +221,6 @@ return check_palindrome(str,s+1,e-1);
 int main()
 {
 
-cout<<check_palindrome("noon",0,3);
+cout<<fibonacci(5);
     return 0;
 }
