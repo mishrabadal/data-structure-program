@@ -83,6 +83,7 @@ int missingNumber(vector<int> &arr)
 }
 int main()
 {
+	cout<<"fhy";
     vector<int> arr = {1, 2, 3, 5}; //{2,4, 6, 8, 10,  14};
     cout << missingNumber(arr);
 
