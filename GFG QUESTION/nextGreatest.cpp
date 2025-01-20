@@ -71,21 +71,58 @@ int missingNumber(vector<int> &arr)
 {
     sort(arr.begin(), arr.end());
 
-    for (int i = 0; i < arr.size()+1; i++)
+    for (int i = 0; i < arr.size() + 1; i++)
     {
-        cout<<arr[i] <<"  "<<i + 1;
-        cout<<endl;
+        cout << arr[i] << "  " << i + 1;
+        cout << endl;
         if (arr[i] != i + 1)
             return i + 1;
     }
 
-    return arr.size()+1;
+    return arr.size() + 1;
+}
+
+vector<int> findTwoElement(vector<int> &arr)
+{
+    // code here
+    sort(arr.begin(), arr.end());
+
+    vector<int> ans;
+    for(auto i :arr)
+    cout<<i<<" ";
+    // repeating
+
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] != i + 1)
+        {
+            ans.push_back(i+1);
+            break;
+        }
+    }
+
+    // missing
+    int n = arr.size();
+    int total = (n * (n + 1)) / 2;
+
+    int sum = 0;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        sum += arr[i];
+    }
+    sum = sum - ans[0];
+    total = total - sum;
+    ans.push_back(total);
+
+    return ans;
+
+    // 1,9
 }
 int main()
 {
-	cout<<"fhy";
-    vector<int> arr = {1, 2, 3, 5}; //{2,4, 6, 8, 10,  14};
-    cout << missingNumber(arr);
+    vector<int> arr = {5, 1 ,6 ,2 ,4 ,6};
+    cout<<endl;
+    findTwoElement(arr);
 
     return 0;
 }
