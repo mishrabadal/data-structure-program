@@ -82,46 +82,61 @@ int missingNumber(vector<int> &arr)
     return arr.size() + 1;
 }
 
+// brute force
+vector<int> findTwoElement_m1(vector<int> &arr)
+{
+    vector<int> ans;
+    int n = arr.size();
+    int repeating = -1, missing = -1;
+    for (int i = 1; i <= n; i++)
+    {
+        int count = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if (arr[j] == i)
+                count++;
+        }
+        if (count == 2)
+            repeating = i;
+        if (count == 0)
+            missing = i;
+
+        if (repeating != -1 && missing != -1)
+            break;
+    }
+    ans.push_back(repeating);
+    ans.push_back(missing);
+    cout << repeating << " " << missing;
+    return ans;
+}
+
 vector<int> findTwoElement(vector<int> &arr)
 {
-    // code here
-    sort(arr.begin(), arr.end());
-
     vector<int> ans;
-    for(auto i :arr)
-    cout<<i<<" ";
-    // repeating
-
-    for (int i = 0; i < arr.size(); i++)
-    {
-        if (arr[i] != i + 1)
-        {
-            ans.push_back(i+1);
-            break;
-        }
-    }
-
-    // missing
     int n = arr.size();
-    int total = (n * (n + 1)) / 2;
-
-    int sum = 0;
-    for (int i = 0; i < arr.size(); i++)
+    int hash[n + 1] = {0};
+    int repeating = -1, missing = -1;
+    for (int i = 0; i < n; i++)
     {
-        sum += arr[i];
+        hash[arr[i]]++;
     }
-    sum = sum - ans[0];
-    total = total - sum;
-    ans.push_back(total);
 
-    return ans;
-
-    // 1,9
+    for (int i = 1; i <= n; i++)
+    {
+        if (hash[i] == 2)
+            repeating = i;
+        if (hash[i] == 0)
+            missing = i;
+        if (repeating != -1 && missing != -1)
+        break;
+    }
+     cout << repeating << " " << missing;
+return {repeating,missing};
 }
 int main()
 {
-    vector<int> arr = {5, 1 ,6 ,2 ,4 ,6};
-    cout<<;gy g
+    vector<int> arr = {2, 2};
+
     findTwoElement(arr);
 
     return 0;
