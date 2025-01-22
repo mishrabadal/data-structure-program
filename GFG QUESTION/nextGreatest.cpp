@@ -121,7 +121,7 @@ vector<int> findTwoElement(vector<int> &arr)
 int main()
 {
     vector<int> arr = {5, 1 ,6 ,2 ,4 ,6};
-    cout<<;
+    cout<<;gy g
     findTwoElement(arr);
 
     return 0;
