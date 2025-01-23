@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 #include <math.h>
+#include <bits/stdc++.h>
+#include <vector>
 
 bool prime_number()
 {
@@ -113,16 +115,72 @@ void make_num()
     {
         ans = ans * 10 + num[i];
     }
+    cout << "number : " << ans << endl;
+    ans = 0;
+    for (int i = 3; i >= 0; i--)
+    {
+        ans = ans * 10 + num[i];
+    }
+    cout << "reverse number : " << ans << endl;
+}
+
+void decimal_to_binary_m1()
+{
+    int a = 32;
+    vector<int> ans;
+    while (a > 0)
+    {
+        ans.push_back(a % 2);
+        a /= 2;
+    }
+    reverse(ans.begin(), ans.end());
+    ;
+    for (auto i : ans)
+        cout << i << " ";
+}
+
+void decimal_to_octal()
+{
+    int a = 32;
+    vector<int> ans;
+    while (a > 0)
+    {
+        ans.push_back(a % 8);
+        a /= 8;
+    }
+    reverse(ans.begin(), ans.end());
+    ;
+    for (auto i : ans)
+        cout << i << " ";
+}
+
+void decimal_to_binary()
+{
+
+    int num = 13;
+    int rem, ans = 0, mul = 1;
+    while (num > 0)
+    {
+        rem = num % 2;
+        num = num / 2;
+        ans = rem * mul + ans;
+        mul = mul * 10;
+    }
     cout << ans;
 }
+
 int main()
 {
-    int a = 2, b = 5, c = 8, d = 3;
-    int ans;
-    ans = a * 10 + b;
-    ans = ans * 10 + c;
-    ans = ans * 10 + d;
-   make_num();
+    //decimal_to_binary();
 
+    int num = 13;
+    int rem,rev=0;
+    while (num > 0)
+    {
+        rem = num % 10;
+        num = num / 10;
+        rev = rev*10+rem;
+    }
+    cout << rev;
     return 0;
 }
