@@ -221,6 +221,7 @@ return check_palindrome(str,s+1,e-1);
 int main()
 {
 
-cout<<fibonacci(5);
+ fiba();
+//cout<<fibonacci(5);
     return 0;
 }
