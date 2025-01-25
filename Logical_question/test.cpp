@@ -72,7 +72,7 @@ void f5()
     }
 }
 int main()
-{
+{gt
 
     f5();
     return 0;
