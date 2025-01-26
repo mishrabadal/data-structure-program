@@ -23,6 +23,7 @@ void f2()
     }
 }
 
+//DAA
 // T(n)= O(n(logn))
 void f3()
 {
@@ -72,7 +73,7 @@ void f5()
     }
 }
 int main()
-{gt
+{
 
     f5();
     return 0;
