@@ -2,9 +2,9 @@
 using namespace std;
 int main()
 {
-    int a[2][2] = {{1, 2}, {3, 4}};
+    int a[2][2] = {{4, 3}, {1, 2}};
     int c[2][2];
-    int b[2][2] = {{1, 2}, {3, 4}};
+    int b[2][2] = {{1, 2}, {6, 5}};
     int n = 2;
     for (int i = 0; i < n; i++)
     {
