@@ -181,6 +181,6 @@ int main()
     // for(auto i : ans )
     // cout<<i<<"  ";
     // RightView(root);
-    TopView(root);
+    RightView(root);
     return 0;
 }
