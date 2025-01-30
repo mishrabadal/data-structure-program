@@ -39,6 +39,7 @@ Node *default_bt()
 
 vector<int> preorder(Node *root)
 {
+
     stack<Node *> s;
     s.push(root);
     vector<int> ans;
@@ -118,10 +119,11 @@ vector<int> inorder(Node *root)
         cout << i << "  ";
     return ans;
 }
+
 int main()
 {
 
     Node *root = default_bt();
-    inorder(root);
+    preorder(root);
     return 0;
 }
