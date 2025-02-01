@@ -90,6 +90,17 @@ void L_view(Node *root, int level, vector<int> &ans)
 
 // right view
 
+void R_view(Node *root, int level, vector<int> &ans)
+{
+    if (!root)
+        return;
+    if (level == ans.size())
+        ans.push_back(root->data);
+   
+    R_view(root->right, level + 1, ans);
+    R_view(root->left, level + 1, ans);
+}
+
 vector<int> RightView(Node *root)
 {
     // code here
@@ -175,12 +186,12 @@ int main()
 {
 
     Node *root = default_bt();
-    // vector<int> ans;
-    // int level = 0;
-    // L_view(root, level, ans);
-    // for(auto i : ans )
-    // cout<<i<<"  ";
+    vector<int> ans;
+    int level = 0;
+    R_view(root, level, ans);
+    for(auto i : ans )
+    cout<<i<<"  ";
     // RightView(root);
-    RightView(root);
+    //RightView(root);
     return 0;
 }
