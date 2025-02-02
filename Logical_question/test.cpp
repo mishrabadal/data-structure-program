@@ -74,7 +74,7 @@ void f5()
 }
 int main()
 {
-sk
+skd
     f5();
     return 0;
 }
