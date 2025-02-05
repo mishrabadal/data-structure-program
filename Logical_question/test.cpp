@@ -74,7 +74,7 @@ void f5()
 }
 int main()
 {
-gg
+wr
     f5();
     return 0;
 }
