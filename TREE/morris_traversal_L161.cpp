@@ -102,7 +102,7 @@ vector<int> preorder(Node *root)
     return ans;
 }
 
-//Flatten binary tree to linked list
+// Flatten binary tree to linked list
 void traverse(Node *temp)
 {
     while (temp != NULL)
@@ -122,7 +122,7 @@ void pre_order(Node *root)
 }
 void flatten(Node *root)
 {
-    Node *temp=root;
+    Node *temp = root;
     while (root)
     {
         if (!root->left)
