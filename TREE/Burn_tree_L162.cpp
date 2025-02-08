@@ -86,7 +86,7 @@ public:
         int timer = 0;
         Burn(root, timer, target);
 
-        // height of target node kiif we consider it as root
+        // height of target node ki if we consider it as root
         Node *BurnNode = NULL;
         find(root, target, BurnNode);
         int high = Height(BurnNode) - 1;
