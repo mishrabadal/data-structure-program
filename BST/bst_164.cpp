@@ -138,7 +138,8 @@ void bst()
 }
 
 int main()
-{kkh
+{
+    
     bst();
     return 0;
 }
