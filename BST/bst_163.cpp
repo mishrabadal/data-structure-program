@@ -123,7 +123,7 @@ Node *deleteNode(Node *root, int target)
 }
 // default bst create
 // T(n)=O(h)insert single element in worst case;
-void bst()
+void default_bst()
 {
     int arr[] = {3, 7, 4, 1, 6, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -139,6 +139,6 @@ void bst()
 
 int main()
 {
-    bst();
+    default_bst();
     return 0;
 }

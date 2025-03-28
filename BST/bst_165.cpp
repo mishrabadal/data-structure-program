@@ -33,6 +33,7 @@ Node *insert(Node *root, int target)
     }
     return root;
 }
+// construct tree from pre order
 Node *BST(vector<int> &preorder, int &index, int lower, int upper)
 {
     if (index == preorder.size() || preorder[index] < lower || preorder[index] > upper)
@@ -61,6 +62,9 @@ Node *constructTree(int post[], int size)
     return BST(post, index, INT_MIN, INT_MAX);
 }
 
+//Preorder Traversal and BST
+//write a program that returns 1 if given array can 
+//represent preorder traversal of a possible BST, else returns 0
 void BST(int arr[], int &index, int lower, int upper, int N)
 {
     if (index == N || arr[index] < lower || arr[index] > upper)

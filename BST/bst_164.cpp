@@ -97,7 +97,7 @@ int minDiffInBST(Node *root)
     return ans;
 }
 
-//sum of k smallest elemnt in bst 
+//sum of k smallest element in bst 
 void ksum(Node *root,int &sum,int &k)
 {
 if(!root)
