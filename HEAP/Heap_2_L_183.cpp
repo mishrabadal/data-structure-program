@@ -2,6 +2,7 @@
 using namespace std;
 // time complexity of creation heap =o(n)
 // space complexity is o(logn)
+//step up approach we are using here
 void Heapify(int arr[], int index, int n)
 {
     int largest = index;
@@ -63,6 +64,10 @@ void printHeap(int arr[],int n)
 int main()
 {
     int arr[] = {10, 3, 8, 9, 5, 13, 18, 14, 11, 70};
+    cout<<"max heap \n";
+    BuildMaxHeap(arr,10);
+    printHeap(arr,10);
+    cout<<"min heap \n";
     BuildMinHeap(arr,10);
     printHeap(arr,10);
     return 0;
