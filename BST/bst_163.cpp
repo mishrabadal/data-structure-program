@@ -133,7 +133,7 @@ void default_bst()
         root = insert(root, arr[i]);
     }
    
-    Node *x = deleteNode(root, 8);
+    Node *x = deleteNode(root,8);
    in_order(x);
 }
 

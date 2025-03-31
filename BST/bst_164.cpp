@@ -13,25 +13,7 @@ public:
         left = right = NULL;
     }
 };
-Node *insert(Node *root, int target)
-{
-    if (!root)
-    {
-        Node *temp = new Node(target);
-        return temp;
-    }
-    // left side
-    if (target < root->data)
-    {
-        root->left = insert(root->left, target);
-    }
-    // right side
-    else
-    {
-        root->right = insert(root->right, target);
-    }
-    return root;
-}
+
 void in_order(Node *root)
 {
 
@@ -136,21 +118,32 @@ int kthLargest(Node *root, int k) {
     return ans;
 }
 
-void default_bst()
-{
-    int arr[] = {3, 7, 4, 1, 6, 8};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    Node *root = NULL;
-    for (int i = 0; i < n; i++)
-    {
-        root = insert(root, arr[i]);
-    }
-   cout<< minDiffInBST(root);
+// Array to BST
+void  ArrayToBST(vector<int>& arr,int start,int end,vector<int>& ans){
+
+    if(start>end)
+    return;
+    int mid= start+(end-start)/2;
+    ans.push_back(arr[mid]);
+    //left side
+    ArrayToBST(arr,start,mid-1,ans);
+    //right side
+    ArrayToBST(arr,mid+1,end,ans);
+
+}
+vector<int> sortedArrayToBST(vector<int>& nums) {
+    vector<int>ans;
+    ArrayToBST(nums,0,nums.size()-1,ans);
+    cout<<&ans[0]<<endl;
+    return ans;
 }
 
 int main()
 {
 
-    default_bst();
+    vector<int>nums={ 1, 2, 3, 4, 5, 6, 7};
+    vector<int>x= sortedArrayToBST(nums);
+ for(auto i :x)
+ cout<<i<<" ";
     return 0;
 }

@@ -8,9 +8,9 @@ class Node
 public:
     int data;
     Node *left, *right;
-    Node(int dataue)
+    Node(int value)
     {
-        data = dataue;
+        data = value;
         left = right = NULL;
     }
 };
