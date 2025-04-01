@@ -1,19 +1,19 @@
 #include <iostream>
 using namespace std;
-// creating node
-class node
+// creating Node
+class Node
 {
 public:
     int data;
-    node *next;
-    node(int value)
+    Node *next;
+    Node(int value)
     {
         data = value;
         next = NULL;
     }
 };
 
-void traverse(node *temp)
+void traverse(Node *temp)
 {
     while (temp != NULL)
     {
@@ -27,8 +27,8 @@ void creation_of_linked_list(int data)
     // output
     // 4
     // 0
-    node *head;
-    head = new node(data);
+    Node *head;
+    head = new Node(data);
     cout << head->data << endl;
     cout << head->next;
 }
@@ -38,8 +38,8 @@ void default_linked_list()
 {
     // OUTPUT
     // 1 2 3 4
-    node *head;
-    node *temp;
+    Node *head;
+    Node *temp;
     head = NULL;
     int arr[] = {1, 2, 3, 4};
     int size= sizeof(arr)/sizeof(arr[0]);
@@ -47,12 +47,12 @@ void default_linked_list()
     {
         if (head == NULL)
         {
-            head = temp = new node(arr[i]);
+            head = temp = new Node(arr[i]);
         }
         else
         {
 
-            temp->next = new node(arr[i]);
+            temp->next = new Node(arr[i]);
             temp = temp->next;
         }
     }
@@ -63,21 +63,21 @@ void inserting_in_begining()
 {
     // output
     //  4 3 2 1 10
-    node *head;
-    head = new node(10);
+    Node *head;
+    head = new Node(10);
     int arr[] = {1, 2, 3, 4};
 
     for (int i = 0; i < 4; i++)
     {
         if (head == NULL)
         {
-            head = new node(arr[i]);
+            head = new Node(arr[i]);
         }
         else
         {
             // inserting in start
-            node *temp;
-            temp = new node(arr[i]);
+            Node *temp;
+            temp = new Node(arr[i]);
             temp->next = head;
             head = temp;
         }
@@ -89,45 +89,45 @@ void inserting_in_begining()
 void inserting_in_end()
 {
     // insert_multiple_value_in_linked_list();
-    node *head;
-    node *temp;
+    Node *head;
+    Node *temp;
     head = NULL;
     int arr[] = {1, 2, 3, 4};
     for (int i = 0; i < 4; i++)
     {
         if (head == NULL)
         {
-            head = temp = new node(arr[i]);
+            head = temp = new Node(arr[i]);
         }
         else
         {
             // inserting in start
 
-            temp->next = new node(arr[i]);
+            temp->next = new Node(arr[i]);
             temp = temp->next;
         }
     }
 
     // insert at end of linked list
-    node *tail = head;
+    Node *tail = head;
     while (tail->next != NULL)
     {
         tail = tail->next;
     }
-    tail->next = new node(50);
+    tail->next = new Node(50);
     traverse(head);
 }
 
 // insert value at the end using recursion
-node *create_linked_list(int arr[], int index, int size)
+Node *create_linked_list(int arr[], int index, int size)
 {
     if (index == size)
     {
 
         return NULL;
     }
-    node *temp;
-    temp = new node(arr[index]);
+    Node *temp;
+    temp = new Node(arr[index]);
     temp->next = create_linked_list(arr, index + 1, size);
     return temp;
 
@@ -135,7 +135,7 @@ node *create_linked_list(int arr[], int index, int size)
     // int main()
     // {
     //     int arr[] = {1, 2, 3, 4};
-    //     node *head;
+    //     Node *head;
     //     head = create_linked_list(arr, 0, 4);
     //     traverse(head);
 
@@ -144,19 +144,19 @@ node *create_linked_list(int arr[], int index, int size)
 }
 
 // inserting in begining of linked list using recursion
-node *create_linked_list(int arr[], int index, int size, node *prev)
+Node *create_linked_list(int arr[], int index, int size, Node *prev)
 {
     if (index == size)
         return prev;
 
-    node *temp;
-    temp = new node(arr[index]);
+    Node *temp;
+    temp = new Node(arr[index]);
     temp->next = prev;
     return create_linked_list(arr, index + 1, size, temp);
 
     // output 4 3 2 1
     //  int arr[] = {1, 2, 3, 4};
-    //  node *head;
+    //  Node *head;
     //  head = create_linked_list(arr, 0, 4,NULL);
     //  traverse(head);
 }
@@ -165,20 +165,20 @@ node *create_linked_list(int arr[], int index, int size, node *prev)
 void insert_at_index()
 {
     // output 1 2 3 30 4
-    node *head;
-    node *temp, *temp2;
+    Node *head;
+    Node *temp, *temp2;
     head = NULL;
     int arr[] = {1, 2, 3, 4};
     for (int i = 0; i < 4; i++)
     {
         if (head == NULL)
         {
-            head = temp = new node(arr[i]);
+            head = temp = new Node(arr[i]);
         }
         else
         {
 
-            temp->next = new node(arr[i]);
+            temp->next = new Node(arr[i]);
             temp = temp->next;
         }
     }
@@ -193,7 +193,7 @@ void insert_at_index()
     {
         temp = temp->next;
     }
-    temp2 = new node(data);
+    temp2 = new Node(data);
     temp2->next = temp->next;
     temp->next = temp2;
     traverse(head);

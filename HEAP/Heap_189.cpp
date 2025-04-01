@@ -55,8 +55,8 @@ int count(Node *root)
 
 bool CBT(Node *root, int index, int total_nodes)
 {
-    if(!root)
-    return 1;
+    if (!root)
+        return 1;
     if (index >= total_nodes)
         return 0;
     return CBT(root->left, 2 * index + 1, total_nodes) && CBT(root->right, 2 * index + 2, total_nodes);
@@ -91,37 +91,36 @@ bool isHeap(struct Node *tree)
     // Every parent>=child
     return MaxHeap(tree);
 }
-//BST to max heap
-
-void inorder(Node *root, vector<int>&ans)
+// BST to max heap
+void inorder(Node *root, vector<int> &ans)
 {
-    if(!root)
-    return;
-    inorder(root->left,ans);
+    if (!root)
+        return;
+    inorder(root->left, ans);
     ans.push_back(root->data);
-    inorder(root->right,ans);
+    inorder(root->right, ans);
 }
-void postorder(Node *root, vector<int>&ans,int &index)
+void postorder(Node *root, vector<int> &ans, int &index)
 {
-    if(!root)
-    return;
-    //left
-    postorder(root->left,ans,index);
-    //right
-    postorder(root->right,ans ,index);
-    //node
-    root->data=ans[index];
-index++;
+    if (!root)
+        return;
+    // left
+    postorder(root->left, ans, index);
+    // right
+    postorder(root->right, ans, index);
+    // node
+    root->data = ans[index];
+    index++;
 }
-void convertToMaxHeapUtil(Node* root)
-    {
-        //inorder traversal
-        vector<int>ans;
-        inorder(root,ans);
-        //post order traversal
-        int index=0;
-        postorder(root,ans,index);
-    } 
+void convertToMaxHeapUtil(Node *root)
+{
+    // inorder traversal
+    vector<int> ans;
+    inorder(root, ans);
+    // post order traversal
+    int index = 0;
+    postorder(root, ans, index);
+}
 int main()
 {
 
