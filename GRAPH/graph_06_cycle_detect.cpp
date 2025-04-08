@@ -16,7 +16,7 @@ bool DetectCycle(int node, vector<vector<int>> &adj, vector<bool> &path, vector<
         if (path[adj[node][j]])
             return 1;
 
-        // if neighbour is laready visited skip it
+        // if neighbour is already visited skip it
 
         if (!visited[adj[node][j]] && DetectCycle(adj[node][j], adj, path, visited))
             return 1;
@@ -49,7 +49,7 @@ bool isCyclic(int V, vector<vector<int>> &edgeList)
     return 0;
 }
 
-// Directed Graph Cycl : solving using kahn's algorithm
+// Directed Graph Cycle : solving using kahn's algorithm
 
 bool isCyclic(int V, vector<vector<int>> &edgeList)
 {
