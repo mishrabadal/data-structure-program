@@ -2,62 +2,53 @@
 using namespace std;
 #include <bits/stdc++.h>
 #include <set>
-// Shortest Path in Weighted undirected graph
-vector<int> shortestPath(int V, int m, vector<vector<int>> &edges)
+
+// Bellman-Ford
+vector<int> bellmanFord(int V, vector<vector<int>> &edges, int S)
 {
-    vector<pair<int, int>> adj[V + 1];
-    for (int i = 0; i < m; i++)
+
+    vector<int> dist(V, 1e8);
+    // 1e8 10 power 8
+    dist[S] = 0;
+    int e = edges.size();
+    for (int i = 0; i < V - 1; i++)
     {
-        int u = edges[i][0];
-        int v = edges[i][1];
-        int weight = edges[i][2];
-        adj[u].push_back({v, weight});
-        adj[v].push_back({u, weight});
-    }
-    // dijkstra algorithm
-    vector<bool> Explored(V + 1, 0);
-    vector<int> dist(V + 1, INT_MAX);
-    vector<int> parent(V + 1, -1);
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> p;
-    p.push({0, 1});
-    dist[1] = 0;
-    while (!p.empty())
-    {
-        int node = p.top().second;
-        p.pop();
-        if (Explored[node])
-            continue;
-        Explored[node] = 1;
-        for (int j = 0; j < adj[node].size(); j++)
+        bool flag=0;
+        // Relax all the edges
+        for (int j = 0; j < e; j++)
         {
-            int neighbour = adj[node][j].first;
-            int weight = adj[node][j].second;
-            if (!Explored[neighbour] && dist[node] + weight < dist[neighbour])
+            int u = edges[j][0];
+            int v = edges[j][1];
+            int wt = edges[j][2];
+            if (dist[u] == 1e8)
+                continue;
+            if (dist[u] + wt < dist[v])
             {
-                dist[neighbour] = dist[node] + weight;
-                p.push({dist[neighbour], neighbour});
-                parent[neighbour] = node;
+                flag=1;
+                dist[v] = dist[u] + wt;
             }
         }
+        if(!flag)
+        return dist;
     }
-    vector<int> path;
-    // i can't reach my destination
-    if (parent[V] == -1)
+    // to detct the cycle
+    for (int j = 0; j < e; j++)
     {
-        path.push_back(-1);
-        return path;
+        int u =edges[j][0];
+        int v =edges[j][1];
+        int wt= edges[j][2];
+        if (dist[u] == 1e8)
+            continue;
+        if (dist[u] + wt < dist[v])
+        {
+            // cycle deducted
+            vector<int> ans;
+            ans.push_back(-1);
+            return ans;
+        }
     }
-    int dest = V;
-    while (dest != -1)
-    {
-        path.push_back(dest);
-        dest = parent[dest];
-    }
-    path.push_back(dist[V]);
-    reverse(path.begin(), path.end());
-    return path;
+    return dist;
 }
-
 int main()
 {
 
