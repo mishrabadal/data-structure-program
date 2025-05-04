@@ -128,16 +128,200 @@ vector<int> findTwoElement(vector<int> &arr)
         if (hash[i] == 0)
             missing = i;
         if (repeating != -1 && missing != -1)
-        break;
+            break;
     }
-     cout << repeating << " " << missing;
-return {repeating,missing};
+    cout << repeating << " " << missing;
+    return {repeating, missing};
+}
+
+// Indexes of Subarray Sum
+int removeDuplicates(vector<int> &arr)
+{
+
+    int prev = arr[0];
+    int count = 1;
+    vector<int> ans;
+    ans.push_back(prev);
+    for (int i = 1; i < arr.size(); i++)
+    {
+
+        if (arr[i] == prev)
+            continue;
+        prev = arr[i];
+        ans.push_back(prev);
+        count++;
+    }
+    arr.clear();
+
+    for (int i = 0; i < ans.size(); i++)
+    {
+        arr.push_back(ans[i]);
+    }
+    return count;
+}
+
+vector<int> subarraySum(vector<int> &arr, int target)
+{
+    int n = arr.size();
+    int j = 0;
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += arr[i];
+
+        while (sum > target && j < i)
+            sum -= arr[j++];
+        if (sum == target)
+            return {j + 1, i + 1};
+    }
+    return {-1};
+}
+
+// Function to find equilibrium point in the array.
+int findEquilibrium(vector<int> &arr)
+{
+    // code here
+    int n = arr.size(), left = 0, right = 0;
+    for (int x : arr)
+        right += x;
+
+    for (int i = 0; i < n; i++)
+    {
+        right -= arr[i];
+        if (left == right)
+            return i;
+        left += arr[i];
+    }
+    return -1;
+}
+
+// Alternate Positive Negative
+
+void rearrange(vector<int> &arr)
+{
+    vector<int> positive, negative;
+    for (auto x : arr)
+    {
+        if (x >= 0)
+            positive.push_back(x);
+        else
+            negative.push_back(x);
+    }
+    int i = 0, j = 0, k = 0;
+
+    while (i < positive.size() and j < negative.size())
+    {
+        if (k % 2 == 0)
+            arr[k++] = positive[i++];
+        else
+            arr[k++] = negative[j++];
+    }
+    while (i < positive.size())
+        arr[k++] = positive[i++];
+    while (j < negative.size())
+        arr[k++] = negative[j++];
+}
+
+// Union of 2 Sorted with Duplicates
+vector<int> findUnion(vector<int> &a, vector<int> &b)
+{
+    // Your code here
+
+    // return vector with correct order of elements
+    vector<int> merge, ans;
+    for (auto x : a)
+        merge.push_back(x);
+    for (auto x : b)
+        merge.push_back(x);
+    sort(merge.begin(), merge.end());
+
+    int prev = merge[0];
+    ans.push_back(prev);
+
+    for (auto x : merge)
+    {
+        if (x == prev)
+            continue;
+        prev = x;
+        ans.push_back(x);
+    }
+    return ans;
+}
+
+// Three way partitioning
+void threeWayPartition(vector<int> &arr, int a, int b)
+{
+    // code here
+    vector<int> first, middle, last;
+    for (auto x : arr)
+    {
+        if (x < a)
+            first.push_back(x);
+        if (x >= a and x <= b)
+            middle.push_back(x);
+        if (x > b)
+            last.push_back(x);
+    }
+
+    int i = 0, k = 0;
+    for (auto x : first)
+        arr[k++] = first[i++];
+
+    i = 0;
+    for (auto x : middle)
+        arr[k++] = middle[i++];
+
+    i = 0;
+    for (auto x : last)
+        arr[k++] = last[i++];
+}
+
+int unvisitedLeaves(int N, int leaves, int frogs[])
+{
+    vector<bool> visited(leaves + 1);
+    for (int j = 0; j < N; j++)
+    {
+        int x = frogs[j];
+        int i = 1;
+        while (i * x <= leaves)
+        {
+            visited[i * x] = true;
+            i++;
+        }
+    }
+    int count = 0;
+    for (auto x : visited)
+    {
+        if (x == 0)
+            count++;
+    }
+    return count - 1;
 }
 int main()
 {
-    vector<int> arr = {2, 2};
+    vector<int> arr = {891, 71, 185, 651, 518};
+    sort(arr.begin(), arr.end());
+    int n = arr.size();
+    vector<int> ans;
+    int i = 0, j = n - 1;
 
-    findTwoElement(arr);
-
+    if (n % 2 == 0)
+    {
+        while (i <= j)
+        {
+            ans.push_back(arr[j--]);
+            ans.push_back(arr[i++]);
+        }
+    }
+    else
+    {
+        while (i < j)
+        {
+            ans.push_back(arr[j--]);
+            ans.push_back(arr[i++]);
+        }
+    }
+    for (auto x : ans)
+        cout << x << " ";
     return 0;
 }
