@@ -272,29 +272,31 @@ void search_element_in_2d_arry()
          }
      }*/
     //logic 3 start here
-    int n=4,m=4;
-    int start =0,end =n*m-1,mid,row_index,col_index;
-    int x =40;
-    while (start<=end)
-    {  
-        mid = (start+end)/2;
-        row_index = mid/m;
-        col_index = mid%m;
-        if(matrix[row_index][col_index]==x){
-           cout<<"found";;
-           break;
+    int n = 4, m = 4;
+    int start = 0, end = n * m - 1, mid, row_index, col_index;
+    int x = 40;
+    while (start <= end)
+    {
+        mid = (start + end) / 2;
+        row_index = mid / m;
+        col_index = mid % m;
+        if (matrix[row_index][col_index] == x)
+        {
+            cout << "found";
+            ;
+            break;
         }
-        else if(matrix[row_index][col_index]<x){
-            start = mid+1;
+        else if (matrix[row_index][col_index] < x)
+        {
+            start = mid + 1;
         }
-        else{
-            end =mid-1;
+        else
+        {
+            end = mid - 1;
         }
-
     }
-    
+
     //logic 3 end here
-      
 }
 
 void maximum_sum_rows()
@@ -324,7 +326,6 @@ void maximum_sum_rows()
     cout << "maximum sum rows : " << index << " sum is : " << total_sum;
 }
 
-
 int main()
 {
     // vector_create();
@@ -335,8 +336,9 @@ int main()
     // rotate_matrix_by_90();
     // rotate_180();
     // search_element();
-//wave_form();
+    //wave_form();
     //maximum_sum_rows();
     search_element_in_2d_arry();
     return 0;
+    
 }
