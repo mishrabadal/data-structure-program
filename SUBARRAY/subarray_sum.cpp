@@ -1,0 +1,79 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <map>
+using namespace std;
+
+int findSubarray(vector<int> &arr)
+{
+    int n = arr.size();
+    int total = 0;
+    unordered_map<int, int> m;
+    int PrefixSum = 0;
+    // initilize by 0,1
+    m[0] = 1;
+    for (int i = 0; i < n; i++)
+    {
+        PrefixSum += arr[i];
+        if (m.count(PrefixSum))
+        {
+            total += m[PrefixSum];
+            m[PrefixSum]++;
+        }
+        else
+            m[PrefixSum] = 1;
+    }
+    return total;
+}
+
+int subarraySum(vector<int> &nums, int k)
+{
+    int n = nums.size();
+    for (int s = 0; s < n; s++)
+    {
+        for (int e = s; e < n; e++)
+        {
+            int sum = 0;
+            for (int i = s; i <= e; i++)
+            {
+                sum += nums[i];
+            }
+            if (sum == k)
+            {
+                for (int i = s; i <= e; i++)
+                {
+                    cout << nums[i] << " ";
+                }
+                cout << endl;
+            }
+        }
+    }
+    return 0;
+}
+
+int subarraySum(vector<int> &nums, int k)
+{
+    unordered_map<int, int> m;
+    m[0] = 1;
+    int PrefixSum = 0;
+    int total = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        PrefixSum += nums[i];
+        if (m.count(PrefixSum - k))
+        {
+            total += m[PrefixSum - k];
+            m[PrefixSum]++;
+        }
+        else
+        m[PrefixSum]++;
+    }
+    return total;
+}
+int main()
+{
+    vector<int> nums = {2, 3, 1, 4, 5, 0};
+    int k = 5;
+    subarraySum(nums, k);
+
+    return 0;
+}
