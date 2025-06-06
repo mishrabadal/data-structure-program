@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 #include <map>
 using namespace std;
-
+//Zero Sum Subarrays O(n)
 int findSubarray(vector<int> &arr)
 {
     int n = arr.size();
@@ -25,9 +25,11 @@ int findSubarray(vector<int> &arr)
     return total;
 }
 
+//560. Subarray Sum Equals K
 int subarraySum(vector<int> &nums, int k)
 {
     int n = nums.size();
+    int total = 0;
     for (int s = 0; s < n; s++)
     {
         for (int e = s; e < n; e++)
@@ -39,6 +41,7 @@ int subarraySum(vector<int> &nums, int k)
             }
             if (sum == k)
             {
+                total++;
                 for (int i = s; i <= e; i++)
                 {
                     cout << nums[i] << " ";
@@ -47,7 +50,7 @@ int subarraySum(vector<int> &nums, int k)
             }
         }
     }
-    return 0;
+    return total;
 }
 
 int subarraySum(vector<int> &nums, int k)
@@ -65,15 +68,17 @@ int subarraySum(vector<int> &nums, int k)
             m[PrefixSum]++;
         }
         else
-        m[PrefixSum]++;
+            m[PrefixSum]++;
     }
     return total;
 }
+
 int main()
 {
     vector<int> nums = {2, 3, 1, 4, 5, 0};
     int k = 5;
-    subarraySum(nums, k);
+    cout << subarraySum(nums, k);
+
 
     return 0;
 }
