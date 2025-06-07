@@ -64,6 +64,7 @@ int countSubarrays(vector<int> &nums, int k)
     }
     return count;
 }
+
 int main()
 {
     vector<int> nums = {2, 5, 6};
