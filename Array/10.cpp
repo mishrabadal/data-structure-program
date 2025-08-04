@@ -30,7 +30,7 @@ int peakElement(vector<int> &arr) {
             return n-1;
         }
         
-        int low = 1,high = n-2;
+        int low = 0,high = n-1;
         while(low<=high){
             int mid = low + (high-low)/2;
             
@@ -58,6 +58,8 @@ int peakElement(vector<int> &arr) {
 
 int main()
 {
+    vector<int>arr={80,10, 20, 15, 2, 23, 90, 80};
+    cout<<peakElement(arr);
     
     return 0;
 }

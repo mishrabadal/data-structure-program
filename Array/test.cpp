@@ -3,61 +3,110 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
-
-
-
-vector<int> findDuplicates(vector<int> &arr)
+void addition_of_matrix()
 {
-    int n = arr.size();
-    vector<int> ans;
-    vector<bool> visited(n, false);
-    for (int i = 0; i < n; i++)
-    {
-        int count = 1;
-        if (visited[i] == true)
-            continue;
-        for (int j = i + 1; j < n; j++)
-        {
-            if (arr[i] == arr[j])
-            {
-                visited[j] = true;
-                count++;
-            }
-        }
-        if(count>1)
-        ans.push_back(arr[i]);
-    }
-    for (auto it : ans)
-        cout << it << endl;
+    int arr[2][3] = {1, 2, 3, 4, 5, 6};
+    int arr2[2][3] = {1, 2, 3, 4, 5, 6};
+    int arr3[2][3];
+    cout << sizeof(arr) / sizeof(arr[0]) << endl;
+    for (int i = 0; i < 2; i++)
+        for (int j = 0; j < 3; j++)
+            arr3[i][j] = arr[i][j] + arr2[i][j];
 
-    return ans;
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+            cout << arr3[i][j] << " ";
+        cout << endl;
+    }
 }
 
-
-
-
-vector<int> _findDuplicates(vector<int> &arr)
+void _rotate_90(vector<vector<int>> &matrix)
 {
-    int n = arr.size();
-    unordered_map<int, int> freq;
-    for (auto num : arr)
-        freq[num]++;
-    vector<int> ans;
-    for (auto it : freq)
+
+    int n = matrix.size();
+    vector<vector<int>> ans(n, vector<int>(n));
+    for (int i = 0; i < n; i++)
     {
-        if (it.second > 1)
-            ans.push_back(it.first);
+        for (int j = 0; j < n; j++)
+        {
+            ans[j][n - 1 - i] = matrix[i][j];
+        }
     }
-    for (auto it : ans)
-        cout << it<< endl;
-    return ans;
+    matrix = ans;
+}
+
+void rotate_90(vector<vector<int>> &matrix)
+{
+    int n = matrix.size();
+    vector<vector<int>> ans(n, vector<int>(n));
+
+    // first transpose the matrix
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+    // now reversing each row
+    for (int i = 0; i < n; i++)
+    {
+        int s = 0, e = n - 1;
+        // reversing row
+        while (s < e)
+            swap(matrix[i][s++], matrix[i][e--]);
+    }
+}
+
+void rotate_180(vector<vector<int>> &matrix)
+{
+    int n = matrix.size();
+    vector<vector<int>> ans(n, vector<int>(n));
+
+    // reversing each row
+    for (int i = 0; i < n; i++)
+    {
+        int s = 0, e = n - 1;
+        while (s < e)
+            swap(matrix[i][s++], matrix[i][e--]);
+    }
+
+    // reversing each column
+    for (int j = 0; j < n; j++)
+    {
+        int s = 0, e = n - 1;
+        while (s < e)
+            swap(matrix[s++][j], matrix[e--][j]);
+    }
 }
 int main()
 {
-    vector<int> arr = {2, 1, -3, 2, 1, 3, 4, 5, -1, -1, -1, -3};
-    findDuplicates(arr);
+    // addition_of_matrix();
+    vector<vector<int>> matrix = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}};
+    for (int i = 0; i < matrix.size(); i++)
+    {
+        for (int j = 0; j < matrix[i].size(); j++)
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl; // Move to next row
+    }
+
+    cout << endl;
+    rotate_180(matrix);
+    // Printing the 2D vector
+    for (int i = 0; i < matrix.size(); i++)
+    {
+        for (int j = 0; j < matrix[i].size(); j++)
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl; // Move to next row
+    }
 
     return 0;
 }
