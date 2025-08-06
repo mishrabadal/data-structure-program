@@ -18,7 +18,7 @@ using namespace std;
     }
      return false;   
     }
-// APPROACH 2 log n Time limit exceeds
+// APPROACH 2 n.log n Time limit exceeds
 bool findPair(vector<int> &arr, int target) {
     int n = arr.size();
     sort(arr.begin(),arr.end());

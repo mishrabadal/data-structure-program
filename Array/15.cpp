@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//missing number
     int missingNumber(vector<int>& nums) {
         int n = nums.size();
         int sum =0;

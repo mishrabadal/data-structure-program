@@ -2,6 +2,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
+//Print Matrix in Wave Form
 void waveForm()
 {
     int arr[4][4] = {16, 21, 37, 43, 52, 67, 74, 85, 94, 10, 11, 12, 13, 14, 15, 16};

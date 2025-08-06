@@ -2,7 +2,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
-//Diagonal sum
+//Diagonal sum of square matrix
 int DiagonalSum(vector<vector<int> >& matrix) {
         // Code here
         int n = matrix.size();

@@ -3,24 +3,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//867. Transpose Matrix
-vector<vector<int>> transpose(vector<vector<int>>& matrix) {
-
-        //TIME COMPLEXITY IS n^2
-        int row = matrix.size();
-        int col = matrix[0].size();
-        vector<vector<int>>ans(col, vector<int>(row));
-        for(int i=0;i<row;i++)
+// 867. Transpose Matrix
+vector<vector<int>> transpose(vector<vector<int>> &matrix)
+{
+    // TIME COMPLEXITY IS n^2
+    int row = matrix.size();
+    int col = matrix[0].size();
+    vector<vector<int>> ans(col, vector<int>(row));
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
         {
-            for(int j=0;j<col;j++)
-            {
-                ans[j][i]=matrix[i][j];
-            }
+            ans[j][i] = matrix[i][j];
         }
-        return ans;
     }
+    return ans;
+}
+
+vector<vector<int>> transpose(vector<vector<int>> &matrix)
+{
+
+    // TIME COMPLEXITY IS n^2 without extray array
+    int row = matrix.size();
+    int col = matrix[0].size();
+
+    for (int i = 0; i < row - 1; i++)
+    {
+        for (int j = i + 1; j < col; j++)
+            swap(matrix[i][j], matrix[j][i]);
+    }
+    return matrix;
+}
 int main()
 {
-    
+
     return 0;
 }

@@ -3,110 +3,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void addition_of_matrix()
+//storing element and it's occurence in the same array
+// by using storing two number at same iposition
+void store(vector<int> &arr)
 {
-    int arr[2][3] = {1, 2, 3, 4, 5, 6};
-    int arr2[2][3] = {1, 2, 3, 4, 5, 6};
-    int arr3[2][3];
-    cout << sizeof(arr) / sizeof(arr[0]) << endl;
-    for (int i = 0; i < 2; i++)
-        for (int j = 0; j < 3; j++)
-            arr3[i][j] = arr[i][j] + arr2[i][j];
+    int n = arr.size();
+    int big_num = INT_MIN;
 
-    for (int i = 0; i < 2; i++)
-    {
-        for (int j = 0; j < 3; j++)
-            cout << arr3[i][j] << " ";
-        cout << endl;
-    }
-}
-
-void _rotate_90(vector<vector<int>> &matrix)
-{
-
-    int n = matrix.size();
-    vector<vector<int>> ans(n, vector<int>(n));
+    // finding biggest number of array
     for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            ans[j][n - 1 - i] = matrix[i][j];
-        }
-    }
-    matrix = ans;
-}
-
-void rotate_90(vector<vector<int>> &matrix)
-{
-    int n = matrix.size();
-    vector<vector<int>> ans(n, vector<int>(n));
-
-    // first transpose the matrix
+        big_num = max(arr[i], big_num);
+    int index = -1;
     for (int i = 0; i < n - 1; i++)
     {
+        if (arr[i] == -1)
+            continue;
+        int count = 1;
         for (int j = i + 1; j < n; j++)
         {
-            swap(matrix[i][j], matrix[j][i]);
+            if (arr[i] == arr[j])
+            {
+                count++;
+                arr[j] = -1;
+            }
         }
+        index++;
+        arr[index] = arr[i] + count * (big_num + 1);
     }
-    // now reversing each row
-    for (int i = 0; i < n; i++)
+
+    // printing num and it's occurence
+
+    for (int i = 0; i <= index; i++)
     {
-        int s = 0, e = n - 1;
-        // reversing row
-        while (s < e)
-            swap(matrix[i][s++], matrix[i][e--]);
+        int number = arr[i] % (big_num + 1);
+        int occ = arr[i] / (big_num + 1);
+        cout << number << " " << occ << endl;
     }
 }
 
-void rotate_180(vector<vector<int>> &matrix)
-{
-    int n = matrix.size();
-    vector<vector<int>> ans(n, vector<int>(n));
-
-    // reversing each row
-    for (int i = 0; i < n; i++)
-    {
-        int s = 0, e = n - 1;
-        while (s < e)
-            swap(matrix[i][s++], matrix[i][e--]);
-    }
-
-    // reversing each column
-    for (int j = 0; j < n; j++)
-    {
-        int s = 0, e = n - 1;
-        while (s < e)
-            swap(matrix[s++][j], matrix[e--][j]);
-    }
-}
 int main()
 {
-    // addition_of_matrix();
-    vector<vector<int>> matrix = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}};
-    for (int i = 0; i < matrix.size(); i++)
-    {
-        for (int j = 0; j < matrix[i].size(); j++)
-        {
-            cout << matrix[i][j] << " ";
-        }
-        cout << endl; // Move to next row
-    }
+  vector<int> arr = {1,1,1, 2, 2, 2, 3, 4, 5};
 
-    cout << endl;
-    rotate_180(matrix);
-    // Printing the 2D vector
-    for (int i = 0; i < matrix.size(); i++)
-    {
-        for (int j = 0; j < matrix[i].size(); j++)
-        {
-            cout << matrix[i][j] << " ";
-        }
-        cout << endl; // Move to next row
-    }
+  for(int i=0;i<arr.size();i++)
+  {
+    int num = arr[i];
+    int count=0;
+    if(num==arr[i])
+    count++;
+  }
 
     return 0;
 }
