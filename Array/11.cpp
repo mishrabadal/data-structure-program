@@ -23,7 +23,8 @@ int searchInsert(vector<int> &arr, int target)
 
         else
         {
-        //yaha par array ke size ko towards left size minimize kar rahe hai isi liye ans ke andar mid ko store kiya hai
+        //yaha par array ke size ko towards left size minimize kar rahe hai isi liye
+        // ans ke andar mid ko store kiya hai
             ans = mid;
             e = mid - 1;
         }

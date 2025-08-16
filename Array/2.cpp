@@ -47,7 +47,7 @@ int getSecondLargest(vector<int> &arr)
 }
 
 
-// APPROACH 3 O(n)
+// APPROACH 3 optimal  O(n)
 int getSecondLargest(vector<int> &arr)
 {
 

@@ -24,7 +24,7 @@ vector<int> twoSum(vector<int> &nums, int target)
 }
 
 // APPROACH 2
-vector<int> twoSum(vector<int> &nums, int target)
+vector<int> _twoSum(vector<int> &nums, int target)
 {
     int n = nums.size();
     unordered_map<int, int> mpp;

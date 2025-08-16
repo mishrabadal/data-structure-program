@@ -22,7 +22,7 @@ int majorityElement(vector<int> &arr)
     return -1;
 }
 
-// Approach 2 optimal nlogn
+// Approach 2 better nlogn
 int majorityElement(vector<int> &arr)
 {
     int n = arr.size();
@@ -44,7 +44,7 @@ int majorityElement(vector<int> &arr)
     return -1;
 }
 
-// approach 3 Better
+// approach 3 optimal
 // time O(n), space O(1)
 int majorityElement(vector<int> &arr)
 {

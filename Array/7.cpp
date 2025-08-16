@@ -53,6 +53,7 @@ void store(vector<int> &arr)
     // finding biggest number of array
     for (int i = 0; i < n; i++)
         big_num = max(arr[i], big_num);
+        
     int index = -1;
     for (int i = 0; i < n - 1; i++)
     {
