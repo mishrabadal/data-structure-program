@@ -2,7 +2,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
-//Aggressive Cows
+// Aggressive Cows
 
 int aggressiveCows(vector<int> &stalls, int k)
 {
@@ -15,6 +15,7 @@ int aggressiveCows(vector<int> &stalls, int k)
     {
         mid = s + (e - s) / 2;
         int count = 1, pos = stalls[0];
+        // allocating stalls to cows and count how many cows get stalls
         for (int i = 1; i < n; i++)
         {
             if (pos + mid <= stalls[i])
@@ -23,16 +24,18 @@ int aggressiveCows(vector<int> &stalls, int k)
                 pos = stalls[i];
             }
         }
-        // agar sare cow ko stall nhi mil paya to range ko chhota karenge
+        // agar sare cow stall nhi mil paya to stalls ke bich ka gap kam karenge to e=mid-1
         if (count < k)
         {
             e = mid - 1;
         }
-        // agar mil jaye to ans ko store kar lenge aur distance bara find karne ke liye
-        // s=mid+1 karenge
+        // agar sare cow stall mil gaya to stalls ke bich ka gap ko increase  karenge to s=mid+1
+        // aur answer ko store kar lenge ho sakta ho yahi maximum ho
+
         else
         {
             ans = mid;
+
             s = mid + 1;
         }
     }
@@ -41,6 +44,8 @@ int aggressiveCows(vector<int> &stalls, int k)
 
 int main()
 {
+    vector<int> stalls = {1, 2, 4, 8, 9};
+    cout << aggressiveCows(stalls, 3);
 
     return 0;
 }
