@@ -2,7 +2,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
-//Four Elements
+// Four Elements sums equal to target
 
 bool find4Numbers(int arr[], int n, int target)
 {
@@ -10,8 +10,10 @@ bool find4Numbers(int arr[], int n, int target)
     sort(arr, arr + n);
     for (int i = 0; i < n - 1; i++)
     {
+
         for (int j = i + 1; j < n; j++)
         {
+
             int k = j + 1, l = n - 1;
             while (k < l)
             {
@@ -30,6 +32,7 @@ bool find4Numbers(int arr[], int n, int target)
 
 int main()
 {
-
+    int arr[] = {1, 2, 3, 4, 5, 6};
+    cout << find4Numbers(arr, 6, 50);
     return 0;
 }

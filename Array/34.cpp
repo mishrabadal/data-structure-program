@@ -35,7 +35,6 @@ int aggressiveCows(vector<int> &stalls, int k)
         else
         {
             ans = mid;
-
             s = mid + 1;
         }
     }

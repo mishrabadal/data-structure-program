@@ -8,9 +8,11 @@ bool hasTripletSum(vector<int> &arr, int target)
     sort(arr.begin(), arr.end());
     int n = arr.size();
     int j = 0, k = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n-2; i++)
     {
+       
         j = i + 1, k = n - 1;
+         
         while (j < k)
         {
             int sum = arr[i] + arr[j] + arr[k];
@@ -28,6 +30,6 @@ bool hasTripletSum(vector<int> &arr, int target)
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5, 6};
-    cout << hasTripletSum(arr, 8);
+    cout << hasTripletSum(arr, 50);
     return 0;
 }

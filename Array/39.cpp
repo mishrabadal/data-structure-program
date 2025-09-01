@@ -2,7 +2,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
-//15. There(3) Sum all distinct index
+//15. Three(3) Sum all distinct index equal to zero
 vector<vector<int>> threeSum(vector<int> &arr)
 {
     vector<vector<int>> ans;
@@ -10,6 +10,7 @@ vector<vector<int>> threeSum(vector<int> &arr)
     sort(arr.begin(), arr.end());
     for (int i = 0; i < n - 2; i++)
     {
+        //agar element repeated hai to skip karo
         if (i > 0 && arr[i] == arr[i - 1])
             continue;
         int s = i + 1; // you can assume s = j
