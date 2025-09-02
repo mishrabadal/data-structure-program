@@ -16,6 +16,9 @@ int threeSumSmaller(int n, vector<int> arr, int target)
             int s = arr[i] + arr[j] + arr[k];
             if (s < target)
             {
+                //agar i j k index ka sum target se kam hai to j aur k ke bich jitna element hoga uska
+                //i j ke sath bhi sum target se kam h hoga so k-j
+                
                 count += k - j;
                 j++;
             }
