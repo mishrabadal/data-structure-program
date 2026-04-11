@@ -27,7 +27,7 @@ int getSecondLargest(vector<int> &arr)
 }
 
 // APPROACH 2 O(2n)
-int getSecondLargest(vector<int> &arr)
+int _getSecondLargest(vector<int> &arr)
 {
     int n = arr.size();
     int first = arr[0];
@@ -36,7 +36,8 @@ int getSecondLargest(vector<int> &arr)
     {
         first = max(arr[i], first);
     }
-    // first largest element
+
+    // second largest element
     int second = -1;
     for (int i = 0; i < n; i++)
     {
@@ -48,7 +49,7 @@ int getSecondLargest(vector<int> &arr)
 
 
 // APPROACH 3 optimal  O(n)
-int getSecondLargest(vector<int> &arr)
+int __getSecondLargest(vector<int> &arr)
 {
 
     int n = arr.size();

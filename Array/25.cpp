@@ -26,8 +26,7 @@ bool searchMatrix(vector<vector<int>> &matrix, int x)
 
     for (int i = 0; i < m; i++)
     {
-        // yaha par check kar rhe hai ki kya x first aur last elemnt ke bich
-        // me aa rha  hai ki  nhi . aur kis row me aa rha ye pta chal jayega
+        // yaha par check kar rhe hai ki kya x first aur last elemnt ke bich  me aa rha  hai ki  nhi . aur kis row me aa rha ye pta chal jayega
         if (matrix[i][0] <= x && x <= matrix[i][n - 1])
         {
             int s = 0, e = n - 1;

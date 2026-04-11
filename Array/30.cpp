@@ -2,7 +2,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 using namespace std;
-// 1539. Kth Missing Positive Number
+// 1539. Kth Missing Positive Number in SORTED Array
 
 // APPROACH 1  BRUTEFORCE O(N)
 int findKthPositive(vector<int> &arr, int k)
@@ -19,7 +19,7 @@ int findKthPositive(vector<int> &arr, int k)
     return k;
 }
 // APPROACH 2 BRUTEFORCE O(N)
-int findKthPositive(vector<int> &arr, int k)
+int _findKthPositive(vector<int> &arr, int k)
 {
     int n = arr.size();
     int i = 0, num = 1;
@@ -42,7 +42,7 @@ int findKthPositive(vector<int> &arr, int k)
 }
 
 // APPROACH 3 optimal O(log.n)  codestorywithmik
-int findKthPositive(vector<int> &arr, int k)
+int __findKthPositive(vector<int> &arr, int k)
 {
     int n = arr.size();
     int s = 0, e = n - 1;
@@ -62,5 +62,8 @@ int findKthPositive(vector<int> &arr, int k)
 int main()
 {
 
+    vector<int> arr = {1,2, 3, 11};
+    int k = 5;
+    cout<<findKthPositive(arr, k) ;
     return 0;
 }

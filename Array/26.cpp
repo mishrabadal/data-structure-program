@@ -7,6 +7,7 @@ using namespace std;
 vector<int> findTwoElement(vector<int> &arr)
 {
     int n = arr.size();
+    // yaha n+1 isliye hai kyonki us number ke index par uska count store karna hai agar 5 ko store karna hai to 5 index pe hi hoga na ki 4th index pe that's why n+1 size declare kiya maine
     int hash[n + 1] = {0};
     int repeating = -1, missing = -1;
     for (int i = 0; i < n; i++)
@@ -23,13 +24,13 @@ vector<int> findTwoElement(vector<int> &arr)
         if (repeating != -1 and missing != -1)
             break;
     }
-    cout<<repeating<<" "<<missing;
+    cout << repeating << " " << missing;
     return {repeating, missing};
 }
 
 int main()
 {
-vector<int>arr={4, 3, 6, 2, 1, 1};
-findTwoElement(arr);
+    vector<int> arr = {4, 3, 6, 2, 1, 1};
+    findTwoElement(arr);
     return 0;
 }

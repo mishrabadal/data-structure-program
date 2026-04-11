@@ -4,6 +4,7 @@
 using namespace std;
 
 // 867. Transpose Matrix
+//it will for both square and rectangular matrix
 vector<vector<int>> transpose(vector<vector<int>> &matrix)
 {
     // TIME COMPLEXITY IS n^2
@@ -20,6 +21,8 @@ vector<vector<int>> transpose(vector<vector<int>> &matrix)
     return ans;
 }
 
+
+//THIS CODE WILL WORK ONLY FOR SQUARE MATRIX. FOR RECTANGULAR MATRIX IT WILL NOT WORK.
 vector<vector<int>> transpose(vector<vector<int>> &matrix)
 {
 

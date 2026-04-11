@@ -13,7 +13,7 @@ void _rotate(vector<int> &arr)
     arr[0] = last;
 }
 
-// rotate array ny k times
+// rotate array by k times
 void rotate(vector<int> &arr)
 {
     // code here

@@ -8,6 +8,7 @@ int searchInsert(vector<int> &arr, int target)
 {
     int n = arr.size();
     int s = 0, e = n - 1;
+    //if not get any insert position in between than it will insert on last index so ans=n
     int ans = n;
     while (s <= e)
     {

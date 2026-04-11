@@ -7,7 +7,7 @@ using namespace std;
 // Time: O(n) (average), O(n) worst case
 // Space: O(n)
 // Approach 1 Brute force using stl
-int majorityElement(vector<int> &arr)
+int _majorityElement(vector<int> &arr)
 {
     unordered_map<int, int> mp;
     int n = arr.size();
@@ -23,7 +23,7 @@ int majorityElement(vector<int> &arr)
 }
 
 // Approach 2 better nlogn
-int majorityElement(vector<int> &arr)
+int __majorityElement(vector<int> &arr)
 {
     int n = arr.size();
     sort(arr.begin(), arr.end());
@@ -71,6 +71,7 @@ int majorityElement(vector<int> &arr)
 
 int main()
 {
-
+vector<int> arr={3,4,3,5,3,4,3,7};
+cout<<majorityElement(arr);
     return 0;
 }

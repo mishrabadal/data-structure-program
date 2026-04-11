@@ -6,6 +6,7 @@ using namespace std;
 //Rotate a Matrix by 180 Counterclockwise
 
 
+//approach 1
 void rotateMatrix(vector<vector<int>>& matrix) {
      
      int n = matrix.size();
@@ -21,13 +22,13 @@ void rotateMatrix(vector<vector<int>>& matrix) {
         
     }
 
-
+//Approach 2
 void rotateMatrix(vector<vector<int>>& matrix) {
      
      int n = matrix.size();
     vector<vector<int>> ans(n, vector<int>(n));
 
-    // reversing each row
+    // reversing each row data's
     for (int i = 0; i < n; i++)
     {
         int s = 0, e = n - 1;
@@ -35,7 +36,7 @@ void rotateMatrix(vector<vector<int>>& matrix) {
             swap(matrix[i][s++], matrix[i][e--]);
     }
 
-    // reversing each column
+    // now reversing the  whole row
     for (int j = 0; j < n; j++)
     {
         int s = 0, e = n - 1;

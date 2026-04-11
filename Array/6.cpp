@@ -6,7 +6,7 @@ using namespace std;
 
 // APPROACH 1 time :
 
-// in this question element every element is repeating  two time . except one element repeating single time
+// in this question every element is repeating  two times . except one element repeating single time
 int unique(vector<int> &arr)
 {
     int ans = 0;
